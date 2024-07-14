@@ -1,5 +1,5 @@
 @extends('layouts.admin') 
 
 @section('content')  
-<h1>Hi from suman</h1>
+<h1>Hi from suman update</h1>
 @endsection
