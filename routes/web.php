@@ -19,8 +19,12 @@ Route::get('/', function () {
 Route::get('/login',[\App\Http\Controllers\auth\LoginController::class ,'showLoginForm'])->name('login.form'); 
 Route::post('/login',[\App\Http\Controllers\auth\LoginController::class ,'loginUser'])->name('auth.login');
 
-Route::middleware('admin')->group(function () { 
-Route::get('/admin', function () {
+Route::middleware('admin')->prefix('admin')->group(function () {  
+
+    Route::get('/slider/index',[\App\Http\Controllers\Admin\SliderController::class,'index'])->name('slider.index');
+
+
+    Route::get('/admin', function () {
     return view('admin.hello');
 })->name('admin.dashboard'); 
 });
