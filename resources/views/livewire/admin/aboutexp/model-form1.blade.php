@@ -22,7 +22,7 @@
                   @enderror
               </div> 
               <div class="col-md-12 my-4">
-                <label class="form-label">About Contact</label> 
+                <label class="form-label">About Contac</label> 
                 <input type="number" class="form-control" wire:model="about_contact" > 
                 @error('about_contact') 
                     <span class="text text-danger">{{$message}}</span>  
