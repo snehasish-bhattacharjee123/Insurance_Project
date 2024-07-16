@@ -2,4 +2,5 @@
 
 @section('content')  
 <h1>Hi Snehasis here</h1>
+<h1>Hi Suman roy</h1>
 @endsection
