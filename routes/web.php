@@ -22,7 +22,7 @@ Route::post('/login',[\App\Http\Controllers\auth\LoginController::class ,'loginU
 Route::middleware('admin')->prefix('admin')->group(function () {  
 
     Route::get('/slider/index',[\App\Http\Controllers\Admin\SliderController::class,'index'])->name('slider.index');
-
+    Route::get('/about/experience',[\App\Http\Controllers\Admin\AdminAboutController::class,'about'])->name('aboutexp.about');
 
     Route::get('/admin', function () {
     return view('admin.hello');
