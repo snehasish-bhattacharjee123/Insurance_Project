@@ -6,17 +6,29 @@
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
-    </li>    
+    </li> 
+    
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+        <i class="mdi mdi-animation menu-icon"></i>
+        <span class="menu-title">Slider</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="tables">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{route('slider.index')}}">View All Slider</a></li>
+          </li>
+        </ul> 
+
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="mdi mdi-circle-outline menu-icon"></i>
-        <span class="menu-title">Products</span>
+        <span class="menu-title">Experience</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">          
-          <li class="nav-item"> <a class="nav-link" href="">view product</a></li>
-          <li class="nav-item"> <a class="nav-link" href="">Add Product</a></li>         
+          <li class="nav-item"> <a class="nav-link" href="{{route('aboutexp.about')}}">view Experience</a></li>        
         </ul>
       </div>
     </li>    
@@ -60,18 +72,6 @@
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="">View All Colours</a></li>
-          </li>
-        </ul> 
-
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-        <i class="mdi mdi-animation menu-icon"></i>
-        <span class="menu-title">Slider</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="tables">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="">View All Slider</a></li>
           </li>
         </ul> 
 

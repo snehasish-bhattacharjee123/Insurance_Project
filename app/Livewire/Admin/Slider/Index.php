@@ -5,7 +5,8 @@ namespace App\Livewire\Admin\Slider;
 use App\Models\Slider;
 use Livewire\Component;
 use Livewire\WithFileUploads; 
-use Livewire\WithPagination;
+use Livewire\WithPagination; 
+use Illuminate\Support\Facades\File;
 
 class Index extends Component
 {  
@@ -13,7 +14,7 @@ class Index extends Component
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
 
-    public $slider_title, $slider_image, $slider_description , $status;
+    public $slider_title, $slider_image, $slider_description , $status, $slider_id;
 
     public function render()
     { 
@@ -60,5 +61,21 @@ class Index extends Component
         $this->slider_image = null;
         $this->slider_description = null;
         $this->status = null;
+    } 
+    public function delete($id)
+    { 
+        $this->slider_id = $id;
+    } 
+
+    public function destroy()
+    { 
+        $slider = Slider::findorfail($this->slider_id);   
+        $path = 'storage/slider/'.$slider->slider_image;
+        if(File::exists($path)){ 
+            File::delete($path);
+        }  
+        $slider->delete(); 
+        session()->flash('deleted','Slider deleted successfully'); 
+        $this->dispatch('model-close');
     }
 }

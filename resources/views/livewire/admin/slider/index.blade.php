@@ -1,5 +1,31 @@
 <div>  
+    
+    @if(session()->has('messege')) 
+       <div class="alert alert-success text-success" role="alert">{{session('messege')}}</div> 
+    @endif
+    @if(session()->has('deleted')) 
+       <div class="alert alert-danger text-danger" role="alert">{{session('deleted')}}</div> 
+    @endif 
 
+    <div wire:ignore.self class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Slider</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>  
+                    <form wire:submit.prevent="destroy">
+                        <div class="modal-body">
+                            <h5 class="text text-warning">Are you sure you want to delete this Slider?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     @include('livewire.admin.slider.model-form')
     <div class="row">
@@ -52,7 +78,10 @@
                                 <p class="text-{{$class}}">{{$text}}</p>
                             </td>
                                     
-                                    
+                             <td>
+                                
+                                <button wire:click="delete({{$s->id}})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
+                             </td>       
                                      
 
 
@@ -72,6 +101,7 @@
 <script>
     window.addEventListener('model-close',event=>{ 
         $('#AddSlider').modal('hide'); 
+        $('#DeleteModal').modal('hide'); 
     });
 </script>
 

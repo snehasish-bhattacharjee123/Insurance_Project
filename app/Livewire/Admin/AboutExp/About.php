@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\AboutExp;
 
 use App\Models\AdminAbout;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads; 
 use Livewire\WithPagination;
@@ -13,7 +14,7 @@ class About extends Component
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
 
-    public $about_experience, $about_image, $about_contact, $status;
+    public $about_experience, $about_image, $about_contact, $status, $aboutexp_id;
 
     public function render()
     {
@@ -39,14 +40,19 @@ class About extends Component
             $status = 1;
         }
 
-        $about = new AdminAbout(); 
+        $about = AdminAbout::first(); 
+        if(!$about)
+        { 
+            $about = new AdminAbout;
+        } 
+
         $about->about_experience = $this->about_experience; 
         $about->about_image = $imageName; 
         $about->about_contact = $this->about_contact; 
         $about->status = $status; 
 
         $about->save();  
-        session()->flash('messege','AboutExperience Added Successfully'); 
+        session()->flash('messege','Experience Added Successfully'); 
         $this->dispatch('model-close'); 
         $this->resetField();
     }
@@ -57,6 +63,71 @@ class About extends Component
         $this->about_image = null;
         $this->about_contact = null;
         $this->status = null;
+    } 
+    public function delete($id)
+    { 
+        $this->aboutexp_id = $id; 
+    } 
+     public function destroy()
+    { 
+        $adminAbout = AdminAbout::find($this->aboutexp_id); 
+        $path = 'storage/about/'.$adminAbout->about_image; 
+
+        if(File::exists($path))
+        { 
+            File::delete($path);
+        } 
+        $adminAbout->delete(); 
+        session()->flash('deleted','Experience Deleted Successfully'); 
+        $this->dispatch('model-close');
+    } 
+    
+    public function edit($id)
+    {  
+        $this->aboutexp_id = $id; 
+        $adminAbout = AdminAbout::find($this->aboutexp_id);   
+
+        $this->about_experience = $adminAbout->about_experience;
+        $this->about_contact = $adminAbout->about_contact;
+        $this->status = (bool)$adminAbout->status;
+    } 
+    public function update()
+    { 
+        $adminAbout = AdminAbout::find($this->aboutexp_id); 
+
+        if($this->about_image){ 
+            $path = 'storage/about/'.$adminAbout->about_image; 
+            if(File::exists($path))
+            { 
+                File::delete($path);
+            } 
+            
+            $imageName = time().'.'.$this->about_image->extension();
+            $imagePath = $this->about_image->storeAs('about', $imageName, 'public'); 
+            $adminAbout->about_image = $imageName; 
+            
+        }  
+        
+
+
+
+
+        $statusCheck = $this->status;  
+        $status = 0;
+
+        if($statusCheck == true){ 
+            $status = 1;
+        }
+
+        $adminAbout->about_experience = $this->about_experience; 
+        $adminAbout->about_contact = $this->about_contact; 
+        $adminAbout->status = $status; 
+
+        $adminAbout->save();  
+        session()->flash('messege','Experience Updated Successfully'); 
+        $this->dispatch('model-close'); 
+        
     }
+
 }
 
