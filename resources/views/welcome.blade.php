@@ -6,7 +6,9 @@
     <title>Insurance </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="" name="description"> 
+
+    <!-- highlight_file -->
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
