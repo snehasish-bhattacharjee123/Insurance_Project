@@ -86,6 +86,7 @@ class Index extends Component
         $slider = Slider::find($this->slider_id);   
 
         $this->slider_title = $slider->slider_title;
+        $this->slider_image = $slider->slider_image;
         $this->slider_description = $slider->slider_description;
         $this->status = (bool)$slider->status;
     } 
@@ -123,8 +124,8 @@ class Index extends Component
         $slider->status = $status; 
 
         $slider->save();  
-        session()->flash('messege','Experience Updated Successfully'); 
-        $this->dispatch('model-close'); 
+        session()->flash('messege','Slider Updated Successfully'); 
+        $this->dispatch('model-close');  
     }
     
 }
