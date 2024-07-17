@@ -64,6 +64,7 @@ class About extends Component
         $this->about_contact = null;
         $this->status = null;
     } 
+    
     public function delete($id)
     { 
         $this->aboutexp_id = $id; 

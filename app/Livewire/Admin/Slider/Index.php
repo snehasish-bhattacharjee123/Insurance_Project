@@ -62,20 +62,89 @@ class Index extends Component
         $this->slider_description = null;
         $this->status = null;
     } 
-    public function delete($id)
-    { 
-        $this->slider_id = $id;
-    } 
 
+    public function delete($id)
+    {
+        $this->slider_id = $id;
+    }
     public function destroy()
-    { 
-        $slider = Slider::findorfail($this->slider_id);   
-        $path = 'storage/slider/'.$slider->slider_image;
-        if(File::exists($path)){ 
+    {
+        $slider = Slider::findorfail($this->slider_id);
+        $path = '/storage/slider/'.$slider->slider_image;
+        if(File::exists($path))
+        {
             File::delete($path);
-        }  
-        $slider->delete(); 
-        session()->flash('deleted','Slider deleted successfully'); 
+        }
+        $slider->delete();
+        session()->flash('success','Slider deleted deleted successfully');
         $this->dispatch('model-close');
     }
+
+    public function edit($id)
+    {  
+        $this->slider_id = $id; 
+        $slider = Slider::find($this->slider_id);   
+
+        $this->slider_title = $slider->slider_title;
+        $this->slider_description = $slider->slider_description;
+        $this->status = (bool)$slider->status;
+    } 
+
+    public function update()
+    {
+        $slider = Slider::find($this->slider_id);
+
+        if($this->slider_image){ 
+            $path = 'storage/slider/'.$slider->slider_image; 
+            if(File::exists($path))
+            { 
+                File::delete($path);
+            } 
+            
+            $imageName = time().'.'.$this->slider_image->extension();
+            $imagePath = $this->slider_image->storeAs('slider', $imageName, 'public'); 
+            $slider->slider_image = $imageName; 
+            
+        }  
+        
+
+
+
+
+        $statusCheck = $this->status;  
+        $status = 0;
+
+        if($statusCheck == true){ 
+            $status = 1;
+        }
+
+        $slider->slider_title = $this->slider_title; 
+        $slider->slider_description = $this->slider_description; 
+        $slider->status = $status; 
+
+        $slider->save();  
+        session()->flash('messege','Experience Updated Successfully'); 
+        $this->dispatch('model-close'); 
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
