@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class AdminAboutController extends Controller
 {
     public function about(){ 
+        
         return view('admin.aboutexp.about');
     }
 }
