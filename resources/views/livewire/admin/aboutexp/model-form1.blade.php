@@ -18,13 +18,14 @@
                     </div>
                     <div class="col-md-8 my-4">
                         <label class="form-label">About Image</label>
-                        <input type="file" class="form-control" wire:model="about_image">
+                        <p class="text text-danger">Maximum 2 Images Can Store</p>
+                        <input type="file" class="form-control" wire:model="about_image" multiple> 
                         @error('about_image')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-12 my-4">
-                        <label class="form-label">About Contac</label>
+                        <label class="form-label">About Contact</label>
                         <input type="number" class="form-control" wire:model="about_contact"
                             oninput="this.value = this.value.slice(0,10)">
                         @error('about_contact')
@@ -96,9 +97,9 @@
                         @enderror
                     </div>
                     <div class="col-md-12 my-4">
-                        <label class="form-label">About Contac</label>
+                        <label class="form-label">About Contact</label>
                         <input type="number" class="form-control" wire:model="about_contact"
-                            >
+                            oninput="this.value =  this.value.slice(0,10)">
                         @error('about_contact')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror

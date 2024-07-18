@@ -94,8 +94,11 @@
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;">
-                            <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$experience->about_image)}}" alt="" style="object-fit: cover;">
+                        <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;"> 
+                            @php
+                                $image = json_decode($experience->about_image);
+                            @endphp
+                            <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[0])}}" alt="" style="object-fit: cover;">
                             <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
                                     <h1 class="text-white mb-0">{{$experience->about_experience}}</h1>
@@ -187,14 +190,14 @@
                     <div class="row g-3">
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="bg-light rounded h-100 p-3">
-                                <div class="bg-white d-flex flex-column justify-content-center text-center rounded h-100 py-4 px-3">
+                                <div class="bg-white d-flex flex-column justify-content-center text-center rounded h-100 py-4 px-3"> 
                                     <img class="align-self-center mb-3" src="img/icon/icon-06-primary.png" alt="">
                                     <h5 class="mb-0">Easy Process</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                            <div class="bg-light rounded h-100 p-3">
+                            <div class="bg-light rounded h-100 p-3"> 
                                 <div class="bg-white d-flex flex-column justify-content-center text-center rounded py-4 px-3">
                                     <img class="align-self-center mb-3" src="img/icon/icon-03-primary.png" alt="">
                                     <h5 class="mb-0">Fast Delivery</h5>
@@ -220,8 +223,11 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;">
-                        <img class="position-absolute w-100 h-100" src="img/feature.jpg" alt="" style="object-fit: cover;">
+                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;"> 
+                    @php
+                        $image = json_decode($experience->about_image);
+                    @endphp
+                        <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[1])}}" alt="" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -325,7 +331,7 @@
                     <div class="bg-white rounded p-3">
                         <div class="d-flex align-items-center bg-primary rounded p-3">
                             <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" >
-                            <h5 class="text-white mb-0">Call Us: +012 345 6789</h5>
+                            <h5 class="text-white mb-0">Call Us: ++91 {{$experience->about_contact}}</h5>
                         </div>
                     </div>
                 </div>

@@ -30,8 +30,13 @@ class About extends Component
             'about_contact' => 'required',
         ]);
 
-        $imageName = time().'.'.$this->about_image->extension();
-        $imagePath = $this->about_image->storeAs('about', $imageName, 'public');
+        $imageNames = []; 
+        foreach ($this->about_image as $image){ 
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('about',$imageName,'public');  
+            $imageNames[] = $imageName; 
+            
+        }
 
         $statusCheck = $this->status;  
         $status = 0;
@@ -47,7 +52,7 @@ class About extends Component
         } 
 
         $about->about_experience = $this->about_experience; 
-        $about->about_image = $imageName; 
+        $about->about_image = json_encode($imageNames); 
         $about->about_contact = $this->about_contact; 
         $about->status = $status; 
 
