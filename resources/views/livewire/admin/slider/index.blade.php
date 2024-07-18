@@ -89,7 +89,7 @@
 
                                         <button wire:click="delete({{ $s->id }})" class="btn btn-danger"
                                             data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
-                                        <button wire:click="edit({{ $s->id }})" class="btn btn-success"
+                                        <button wire:click="edit({{ $s->id }})" class="btn btn-success my-3"
                                             data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
                                     </td>
 

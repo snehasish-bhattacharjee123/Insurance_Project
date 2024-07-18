@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="modal-body">
+            <div wire:loading.remove class="modal-body">
                 <form wire:submit.prevent="update()">
                     <div class="col-md-8 my-2">
                         <label class="form-label">Slider Title</label>
@@ -78,7 +78,12 @@
                     </div>
                     <div class="col-md-8 my-4">
                         <label class="form-label">Slider Image</label>
-                        <input type="file" class="form-control" wire:model="slider_image">
+                        <input type="file" class="form-control" wire:model="slider_image"> 
+                        
+                        @if (!empty($slider_image))
+                            <img src="{{ asset('storage/slider/' . $slider_image) }}" alt="Slider Image" class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
+                        @endif
+                        
                         @error('slider_image')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
@@ -102,7 +107,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     wire:click="resetField()">Close</button>
-                <button type="submit" class="btn btn-success">Update changes</button>
+                <button type="submit" class="btn btn-warning">Update changes</button>
             </div>
             </form>
         </div>

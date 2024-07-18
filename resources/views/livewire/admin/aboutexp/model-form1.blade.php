@@ -11,7 +11,7 @@
                 <form wire:submit.prevent="store()">
                     <div class="col-md-8 my-2">
                         <label class="form-label">About Experience</label>
-                        <input type="text" class="form-control" wire:model="about_experience">
+                        <input type="number" class="form-control" wire:model="about_experience">
                         @error('about_experience')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
@@ -77,7 +77,7 @@
                     <form wire:submit.prevent="update()">
                         <div class="col-md-8 my-2">
                             <label class="form-label">About Experience</label>
-                            <input type="text" class="form-control" wire:model="about_experience">
+                            <input type="number" class="form-control" wire:model="about_experience">
                             @error('about_experience')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
