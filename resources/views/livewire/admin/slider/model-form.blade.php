@@ -100,7 +100,6 @@
                         @error('slider_description')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
-
                     </div>
 
             </div>
