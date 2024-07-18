@@ -14,7 +14,7 @@ class About extends Component
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
 
-    public $about_experience, $about_image, $about_contact, $status, $aboutexp_id;
+    public $about_experience, $about_image, $about_contact, $status, $aboutexp_id,$current_image;
 
     public function render()
     {
@@ -90,6 +90,7 @@ class About extends Component
 
         $this->about_experience = $adminAbout->about_experience;
         $this->about_contact = $adminAbout->about_contact;
+        $this->current_image = $adminAbout->about_image;
         $this->status = (bool)$adminAbout->status;
     } 
     public function update()

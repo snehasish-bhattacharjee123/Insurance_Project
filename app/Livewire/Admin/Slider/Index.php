@@ -14,7 +14,7 @@ class Index extends Component
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
 
-    public $slider_title, $slider_image, $slider_description , $status, $slider_id;
+    public $slider_title, $slider_image, $slider_description , $status, $slider_id,$current_image;
 
     public function render()
     { 
@@ -86,7 +86,7 @@ class Index extends Component
         $slider = Slider::find($this->slider_id);   
 
         $this->slider_title = $slider->slider_title;
-        $this->slider_image = $slider->slider_image;
+        $this->current_image = $slider->slider_image;
         $this->slider_description = $slider->slider_description;
         $this->status = (bool)$slider->status;
     } 

@@ -80,8 +80,8 @@
                         <label class="form-label">Slider Image</label>
                         <input type="file" class="form-control" wire:model="slider_image"> 
                         
-                        @if (!empty($slider_image))
-                            <img src="{{ asset('storage/slider/' . $slider_image) }}" alt="Slider Image" class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
+                        @if (!empty($current_image))
+                            <img src="{{ asset('storage/slider/' . $current_image) }}" alt="Slider Image" class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
                         @endif
                         
                         @error('slider_image')

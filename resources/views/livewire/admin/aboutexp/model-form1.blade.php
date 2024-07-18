@@ -77,7 +77,7 @@
                 <form wire:submit.prevent="update()">
                     <div class="col-md-8 my-2">
                         <label class="form-label">About Experience</label>
-                        <input type="number" class="form-control" wire:model="about_experience" value="{{'about_experience'}}">
+                        <input type="number" class="form-control" wire:model="about_experience">
                         @error('about_experience')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
@@ -86,8 +86,8 @@
                         <label class="form-label">About Image</label>
                         <input type="file" class="form-control" wire:model="about_image">
 
-                        @if (!empty($about_image))
-                            <img src="{{ asset('/storage/about/' . $about_image) }}" alt="Experience image "
+                        @if (!empty($current_image))
+                            <img src="{{ asset('storage/about/' . $current_image) }}" alt="Experience image "
                                 class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
                         @endif
 
