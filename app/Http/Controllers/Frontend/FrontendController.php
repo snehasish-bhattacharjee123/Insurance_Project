@@ -14,5 +14,8 @@ class FrontendController extends Controller
         $slider = Slider::where('status','=',1)->get(); 
         $experience = AdminAbout::first();
         return view('welcome',compact('slider','experience'));
+    } 
+    public function appoinment(Request $request){ 
+        dd($request->all());
     }
 }

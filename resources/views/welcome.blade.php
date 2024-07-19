@@ -8,8 +8,8 @@
     <meta content="" name="keywords">
     <meta content="" name="description"> 
 
-    <!-- highlight_file -->
-
+    <!-- csrf-token -->
+    <meta  name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -337,43 +337,45 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white rounded p-5">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="gname" placeholder="Gurdian Name">
-                                        <label for="gname">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="gmail" placeholder="Gurdian Email">
-                                        <label for="gmail">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="cname" placeholder="Child Name">
-                                        <label for="cname">Your Mobile</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="cage" placeholder="Child Age">
-                                        <label for="cage">Service Type</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 80px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
+                    <form id="appoinment"> 
+                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
+                                    <label for="gname">Your Name</label>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="gmail" name="gmail" placeholder="Guardian Email">
+                                    <label for="gmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="cname" name="phone" placeholder="Child Name">
+                                    <label for="cname">Your Mobile</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="cage" name="service" placeholder="Child Age">
+                                    <label for="cage">Service Type</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button id="form-button" class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
+                            </div>
+                        </div>
+                    </form>
+
                     </div>
                 </div>
             </div>
@@ -589,7 +591,37 @@
     <script src="{{asset('assets/front/lib/counterup/counterup.min.js')}}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{asset('assets/front/js/main.js')}}"></script>
+    <script src="{{asset('assets/front/js/main.js')}}"></script> 
+
+    <script>
+          $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
+                }
+            });
+
+            $('#form-button').click(function(e) {
+                e.preventDefault();
+
+                var data = $('#appoinment').serialize();
+
+                console.log(data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{route('appoinment.post')}}",
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
-</html>
+</html> 

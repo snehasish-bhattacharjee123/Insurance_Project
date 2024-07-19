@@ -85,11 +85,19 @@
                     </div>
                     <div class="col-md-8 my-4">
                         <label class="form-label">About Image</label>
-                        <input type="file" class="form-control" wire:model="about_image">
+                        <input type="file" class="form-control" wire:model="about_image" multiple>
+                        @php 
+                          $image = json_decode($current_image); 
+                        @endphp 
+                        @if (!empty($current_image)) 
+                            @foreach($image as $index=>$img)  
+                                <div class="image-container" style="display: inline-block; text-align: center; margin-right: 10px;">
+                                    <img src="{{ asset('storage/about/' . $img) }}" alt="Experience image"
+                                        class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
+                                    <a wire:click="particularImageDelete({{ $index }}, '{{ $img }}')" class="my-3 d-block" style="text-decoration: none; cursor:pointer;" onclick="window.alert('Are You Sure You Want To Delete This Image?')">Delete</a> 
+                                </div>
 
-                        @if (!empty($current_image))
-                            <img src="{{ asset('storage/about/' . $current_image) }}" alt="Experience image "
-                                class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
+                            @endforeach
                         @endif
 
                         @error('about_image')

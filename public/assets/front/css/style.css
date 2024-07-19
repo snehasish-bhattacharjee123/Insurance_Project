@@ -468,4 +468,15 @@
 
 .footer .copyright a:hover {
     color: #FFFFFF;
+} 
+
+/* apoinment */ 
+#sendmessage {
+    color: #0078ff;
+    border: 1px solid #0078ff;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }

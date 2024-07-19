@@ -59,7 +59,13 @@
                                 @php 
                                     $image = json_decode($a->about_image);
                                 @endphp 
-                                <td><img src="{{ asset('storage/about/' .$image[0] ) }}" class="rounded mx-auto d-block" style="height: 100px; width: 100px; background-size: cover" alt=""></td>
+                                <td>
+                                    @if(!empty($image))
+                                        <img src="{{ asset('storage/about/' .$image[0] ) }}" class="rounded mx-auto d-block" style="height: 100px; width: 100px; background-size: cover" alt=""> 
+                                    @else 
+                                        <p class="text text-warning">No Image Here</p> 
+                                    @endif
+                                </td>
                                 <td>{{$a->about_experience}}</td>
                                 <td>{{$a->about_contact}}</td>
                                 <td>
