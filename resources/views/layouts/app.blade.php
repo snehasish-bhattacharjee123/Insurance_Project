@@ -42,6 +42,8 @@
     
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
     
+    @livewireScripts
+    
     <!-- <script> 
        document.addEventListener('livewire:load', function () {
         window.addEventListener('message', event => {
