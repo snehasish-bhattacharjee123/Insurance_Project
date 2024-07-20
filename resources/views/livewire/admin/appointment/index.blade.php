@@ -11,22 +11,35 @@
             <div class="card">
                 <div class="card-header">
                     <h2>
-                        Experience About
-                        <a href="#" class="btn btn-primary float-end btn-sm" data-bs-toggle="modal" data-bs-target="#AddAbout">Add Experience</a>
+                        Users Appointment 
                     </h2> 
                 </div> 
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <th>Sr No</th>
-                            <th>About Image</th>
-                            <th>About Experience</th>
-                            <th>About  Contact</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>User Name</th>
+                            <th>User Email</th>
+                            <th>Usre Contact</th>
+                            <th>User Service</th>
+                            <th>User Message</th>
+                            <th>View</th>
                         </thead> 
                         <tbody> 
-                            
+                            <?php
+                                $i = 1;   
+                            ?>
+                            @foreach($appointment as $a)
+                                <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{$a->appointment_name}}</td>
+                                <td>{{$a->appointment_email}}</td>
+                                <td>{{$a->appointment_number}}</td>
+                                <td>{{$a->appointment_service}}</td>
+                                <td>{{$a->appointment_message}}</td>
+                                <td><button type="button" class="btn btn-outline-success">Seen</button></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table> 
 </div>

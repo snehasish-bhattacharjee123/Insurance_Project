@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Admin\Appointment;
 
+use App\Models\Appointment;
 use Livewire\Component;
 
 class Index extends Component
 {
     public function render()
     {
-        return view('livewire.admin.appointment.index')->extends('layouts.admin');
+        $appointment =  Appointment::orderBy('id','Desc')->paginate(5);
+        return view('livewire.admin.appointment.index',['appointment'=>$appointment])->extends('layouts.admin');
     }
 }
