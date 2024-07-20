@@ -97,8 +97,12 @@
                         <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;"> 
                             @php
                                 $image = json_decode($experience->about_image);
-                            @endphp
-                            <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[0])}}" alt="" style="object-fit: cover;">
+                            @endphp 
+                            @if($image)
+                                <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[0])}}" alt="" style="object-fit: cover;"> 
+                            @else
+                                <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
+                            @endif
                             <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
                                     <h1 class="text-white mb-0">{{$experience->about_experience}}</h1>
@@ -226,8 +230,13 @@
                     <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;"> 
                     @php
                         $image = json_decode($experience->about_image);
-                    @endphp
-                        <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[1])}}" alt="" style="object-fit: cover;">
+                    @endphp 
+
+                    @if(count($image) > 1)
+                        <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[1])}}" alt="" style="object-fit: cover;"> 
+                    @else
+                        <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
+                    @endif
                     </div>
                 </div>
             </div>
@@ -338,35 +347,35 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white rounded p-5">
                     <form id="appoinment"> 
-                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div id="sendmessage">Your appointment has been scheduled!</div>
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
+                                    <input type="text" class="form-control" id="gname" name="appointment_name" placeholder="Guardian Name">
                                     <label for="gname">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="gmail" name="gmail" placeholder="Guardian Email">
+                                    <input type="email" class="form-control" id="gmail" name="appointment_email" placeholder="Guardian Email">
                                     <label for="gmail">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="cname" name="phone" placeholder="Child Name">
+                                    <input type="number" class="form-control" id="cname" name="appointment_number" placeholder="Child Name" oninput="this.value = this.value.slice(0,10)">
                                     <label for="cname">Your Mobile</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="cage" name="service" placeholder="Child Age">
+                                    <input type="text" class="form-control" id="cage" name="appointment_service" placeholder="Child Age">
                                     <label for="cage">Service Type</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="appointment_message" style="height: 80px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
@@ -612,8 +621,9 @@
                     type: 'POST',
                     url: "{{route('appoinment.post')}}",
                     data: data,
-                    success: function(response) {
-                        console.log(response);
+                    success: function(response) { 
+                        $('#appoinment')[0].reset();
+                        $('#sendmessage').show();
                     },
                     error: function(error) {
                         console.log(error);

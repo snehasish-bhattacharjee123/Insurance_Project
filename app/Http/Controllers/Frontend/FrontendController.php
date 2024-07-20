@@ -20,22 +20,30 @@ class FrontendController extends Controller
     public function appoinment(Request $request){ 
         
         $request->validate([ 
-            'contact_name' => 'required|string|max:255',
-            'contact_email' => 'required|email|max:255',
-            'contact_number' => 'required|string|max:255',
-            'contact_service' => 'required|string|max:255',
-            'contact_message' => 'nullable|string',
+            'appointment_name' => 'required|string|max:255',
+            'appointment_email' => 'required|email|max:255',
+            'appointment_number' => 'required|string|max:255',
+            'appointment_service' => 'required|string|max:255',
+            'appointment_message' => 'nullable|string',
 
         ]);
 
     
-        Appointment::create($request->all());
-        return redirect()->back()->with('success', 'Your appointment has been scheduled!');
+        $appoinmnet = new Appointment; 
+
+        $appoinmnet->appointment_name = $request->appointment_name;
+        $appoinmnet->appointment_email = $request->appointment_email;
+        $appoinmnet->appointment_number = $request->appointment_number;
+        $appoinmnet->appointment_service = $request->appointment_service;
+        $appoinmnet->appointment_message = $request->appointment_message; 
+
+        $appoinmnet->save();
+        return response()->json(['message' => 'Your appointment has been scheduled!'], 200);
+    }
        
  
 
 
-    }
 
     
 }

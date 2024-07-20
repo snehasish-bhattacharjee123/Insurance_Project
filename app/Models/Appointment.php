@@ -9,12 +9,12 @@ class Appointment extends Model
 {   
     protected $table = 'appointments'; 
     protected $fillable = [
-        'contact_name', 
-        'contact_email', 
-        'contact_number', 
-        'contact_service',
-        'contact_message',
-        'contact_view'
+        'appointment_name', 
+        'appointment_email', 
+        'appointment_number', 
+        'appointment_service',
+        'appointment_message',
+        'appointment_view'
     ];
     use HasFactory;
 }

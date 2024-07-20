@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->string('contact_name');
-            $table->string('contact_email');
-            $table->string('contact_number');
-            $table->string('contact_service');
-            $table->text('contact_message')->nullable();
-            $table->string('contact_view')->default('unseen');
+            $table->string('appointment_name');
+            $table->string('appointment_email');
+            $table->string('appointment_number');
+            $table->string('appointment_service');
+            $table->text('appointment_message')->nullable();
+            $table->string('appointment_view')->default('unseen');
             $table->timestamps();
         });
     }
