@@ -340,7 +340,7 @@
                     <div class="bg-white rounded p-3">
                         <div class="d-flex align-items-center bg-primary rounded p-3">
                             <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" >
-                            <h5 class="text-white mb-0">Call Us: ++91 {{$experience->about_contact}}</h5>
+                            <h5 class="text-white mb-0">Call Us: +91 {{$experience->about_contact}}</h5>
                         </div>
                     </div>
                 </div>
@@ -351,31 +351,32 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="gname" name="appointment_name" placeholder="Guardian Name">
+                                    <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
                                     <label for="gname">Your Name</label>
+                                    
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="gmail" name="appointment_email" placeholder="Guardian Email">
-                                    <label for="gmail">Your Email</label>
+                                    <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
+                                    <label for="schedule-date">Schedule Date</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="cname" name="appointment_number" placeholder="Child Name" oninput="this.value = this.value.slice(0,10)">
+                                    <input type="number" class="form-control" id="cname" name="number" placeholder="Child Name" oninput="this.value = this.value.slice(0,10)">
                                     <label for="cname">Your Mobile</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="cage" name="appointment_service" placeholder="Child Age">
+                                    <input type="text" class="form-control" id="cage" name="service" placeholder="Child Age">
                                     <label for="cage">Service Type</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="appointment_message" style="height: 80px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>

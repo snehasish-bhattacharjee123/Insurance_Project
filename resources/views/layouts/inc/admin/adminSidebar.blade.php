@@ -36,7 +36,7 @@
       $appoinmentNotification = \App\Models\Appointment::where('appointment_view','unseen')->count();
     @endphp
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="{{route('appoinment.users')}}" aria-expanded="false" aria-controls="form-elements">
+      <a class="nav-link" href="{{route('appoinment.users')}}"  >
           <i class="mdi mdi-view-headline menu-icon"></i>
           <span class="menu-title">Appointment Notification</span> 
           @if($appoinmentNotification > 0)
