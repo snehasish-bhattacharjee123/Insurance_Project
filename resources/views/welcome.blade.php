@@ -94,15 +94,17 @@
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;"> 
-                            @php
-                                $image = json_decode($experience->about_image);
-                            @endphp 
-                            @if($image)
-                                <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[0])}}" alt="" style="object-fit: cover;"> 
-                            @else
-                                <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
-                            @endif
+                        <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;">  
+                            @if($experience)
+                                @php
+                                    $image = json_decode($experience->about_image);
+                                @endphp 
+                                @if($image)
+                                    <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[0])}}" alt="" style="object-fit: cover;"> 
+                                @else
+                                    <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
+                                @endif 
+                            
                             <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
                                     <h1 class="text-white mb-0">{{$experience->about_experience}}</h1>
@@ -110,7 +112,10 @@
                                     <h5 class="text-white mb-0">Experience</h5>
                                 </div>
                             </div>
-                        </div>
+                            @else 
+                                <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;">  
+                            @endif
+                        </div> 
                     </div>
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="h-100">
@@ -133,8 +138,13 @@
                             <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="">
-                                    <h5 class="mb-0">Call Us: +91 {{$experience->about_contact}}</h5>
+                                    <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt=""> 
+                                    @if($experience)
+                                        <h5 class="mb-0">Call Us: +91 {{$experience->about_contact}}</h5>  
+                                    @else 
+                                        <h5 class="mb-0">Call Us: +91 7980225928</h5>   
+                                    @endif
+
                                 </div>
                             </div>
                         </div>
@@ -227,15 +237,19 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;"> 
-                    @php
-                        $image = json_decode($experience->about_image);
-                    @endphp 
+                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;">  
+                    @if($experience)
+                        @php
+                            $image = json_decode($experience->about_image);
+                        @endphp 
 
-                    @if(count($image) > 1)
-                        <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[1])}}" alt="" style="object-fit: cover;"> 
-                    @else
-                        <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
+                        @if(count($image) > 1)
+                            <img class="position-absolute w-100 h-100" src="{{asset('storage/about/'.$image[1])}}" alt="" style="object-fit: cover;"> 
+                        @else
+                            <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;"> 
+                        @endif 
+                    @else 
+                        <img class="position-absolute w-100 h-100" src="{{asset('assets/front/img/about.jpg')}}" alt="" style="object-fit: cover;">  
                     @endif
                     </div>
                 </div>
@@ -339,8 +353,12 @@
                     <p class="text-white mb-5">Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet. Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna.</p>
                     <div class="bg-white rounded p-3">
                         <div class="d-flex align-items-center bg-primary rounded p-3">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" >
-                            <h5 class="text-white mb-0">Call Us: +91 {{$experience->about_contact}}</h5>
+                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" > 
+                            @if($experience)
+                                <h5 class="text-white mb-0">Call Us: +91 {{$experience->about_contact}}</h5> 
+                            @else 
+                                <h5 class="text-white mb-0">Call Us: +91 7980225928</h5>  
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -352,7 +370,7 @@
                             <div class="col-sm-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
-                                    <label for="gname">Your Name</label>
+                                    <label for="gname">Your Name</label> 
                                     
                                 </div>
                             </div>
