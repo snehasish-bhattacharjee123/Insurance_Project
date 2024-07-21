@@ -23,7 +23,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::get('/slider/index',[\App\Http\Controllers\Admin\SliderController::class,'index'])->name('slider.index');
     Route::get('/about/experience',[\App\Http\Controllers\Admin\AdminAboutController::class,'about'])->name('aboutexp.about'); 
-    Route::get('/appointment/details/users',App\Livewire\Admin\Appointment\Index::class)->name('appoinment');
+    Route::get('/appointment/details/users',App\Livewire\Admin\Appointment\Index::class)->name('appoinment.users');
 
     Route::get('/admin', function () {
     return view('admin.hello');

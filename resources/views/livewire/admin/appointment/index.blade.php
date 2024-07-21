@@ -37,9 +37,22 @@
                                 <td>{{$a->appointment_number}}</td>
                                 <td>{{$a->appointment_service}}</td>
                                 <td>{{$a->appointment_message}}</td>
-                                <td><button type="button" class="btn btn-outline-success">Seen</button></td>
+                                <td>
+                                @if ($a->appointment_view == 'seen')
+                                    <p class="text text-warning text-center" style="font-size: 20px;">Seen</p>
+                                @else
+                                    <button wire:click="appointment_view({{ $a->id }})" type="button" class="btn btn-outline-success">
+                                        Mark as Seen
+                                    </button>
+                                @endif 
+                            </td>
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table> 
-</div>
+                    </table>  
+
+                    {{$appointment->links()}}
+                </div>
+            </div>
+        </div>
+    </div>

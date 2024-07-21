@@ -32,25 +32,19 @@
         </ul>
       </div>
     </li>    
+    @php 
+      $appoinmentNotification = \App\Models\Appointment::where('appointment_view','unseen')->count();
+    @endphp
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-        aria-controls="form-elements">
-        <i class="mdi mdi-view-headline menu-icon"></i>
-        <span class="menu-title">Categories</span>
-        <i class="menu-arrow"></i>
+      <a class="nav-link" data-bs-toggle="collapse" href="{{route('appoinment.users')}}" aria-expanded="false" aria-controls="form-elements">
+          <i class="mdi mdi-view-headline menu-icon"></i>
+          <span class="menu-title">Appointment Notification</span> 
+          @if($appoinmentNotification > 0)
+            <span class="ms-2 badge text-white bg-danger"><livewire:admin.appointment.apointment-count/></span>  
+          @endif
       </a>
-      <div class="collapse" id="form-elements">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="">Add Categories</a></li>          
-        </ul>
-      </div> 
-      <div class="collapse" id="form-elements"> 
-        <ul class="nav flex-column sub-menu">  
-          <li class="nav-item"><a class="nav-link" href="">View Categories</a></li> 
-        </ul>
-      </div>
-
-    </li>    
+    </li>
+   
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
         <i class="mdi mdi-chart-pie menu-icon"></i>
