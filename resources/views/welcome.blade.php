@@ -156,7 +156,7 @@
 
 
     <!-- Facts Start -->
-    <div class="container-fluid overflow-hidden my-5 px-lg-0">
+    {{-- <div class="container-fluid overflow-hidden my-5 px-lg-0">
         <div class="container facts px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s">
@@ -190,7 +190,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Facts End -->
 
 
@@ -413,7 +413,7 @@
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto" style="max-width: 500px;">
                 <h1 class="display-6 mb-5">Meet Our Professional Team Members</h1>
@@ -497,12 +497,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Team End -->
 
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto" style="max-width: 500px;">
                 <h1 class="display-6 mb-5">What They Say About Our Insurance</h1>
@@ -546,7 +546,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Testimonial End -->
 
 
