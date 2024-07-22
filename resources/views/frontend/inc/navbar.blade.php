@@ -7,8 +7,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="{{route('first.page')}}" class="nav-item nav-link active">Home</a>
+                <a href="{{route('about.page')}}" class="nav-item nav-link">About Us</a>
                 <a href="service.html" class="nav-item nav-link">Our Services</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
