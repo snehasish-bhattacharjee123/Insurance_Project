@@ -364,45 +364,48 @@
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white rounded p-5">
-                    <form id="appoinment"> 
-                        <div id="sendmessage">Your appointment has been scheduled!</div>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
-                                    <label for="gname">Your Name</label> 
-                                    
+                        <form id="appoinment"> 
+                            <div id="sendmessage" style="display:none;">Your appointment has been scheduled!</div>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
+                                        <label for="gname">Your Name</label>
+                                        <span class="text-danger" id="nameError"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
+                                        <label for="schedule-date">Schedule Date</label>
+                                        <span class="text-danger" id="dateError"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="cname" name="number" placeholder="Your Mobile" oninput="this.value = this.value.slice(0,10)">
+                                        <label for="cname">Your Mobile</label>
+                                        <span class="text-danger" id="numberError"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cage" name="service" placeholder="Service Type">
+                                        <label for="cage">Service Type</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
+                                        <label for="message">Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button id="form-button" class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
-                                    <label for="schedule-date">Schedule Date</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control" id="cname" name="number" placeholder="Child Name" oninput="this.value = this.value.slice(0,10)">
-                                    <label for="cname">Your Mobile</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="cage" name="service" placeholder="Child Age">
-                                    <label for="cage">Service Type</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
-                                    <label for="message">Message</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button id="form-button" class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+
 
                     </div>
                 </div>
@@ -622,23 +625,47 @@
     <script src="{{asset('assets/front/js/main.js')}}"></script> 
 
     <script>
-          $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
-                }
-            });
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
+            }
+        });
 
-            $('#form-button').click(function(e) {
-                e.preventDefault();
+        $('#form-button').click(function(e) {
+            e.preventDefault();
 
+            // Clear previous error messages
+            $('.text-danger').text('');
+
+            // Get form values
+            var name = $('#gname').val();
+            var date = $('#schedule-date').val();
+            var number = $('#cname').val();
+
+            var isValid = true;
+
+            // Validate fields
+            if (!name) {
+                $('#nameError').text('The Name field is required');
+                isValid = false;
+            }
+            if (!date) {
+                $('#dateError').text('The Date field is required');
+                isValid = false;
+            }
+            if (!number) {
+                $('#numberError').text('The Number field is required');
+                isValid = false;
+            }
+
+            // If valid, proceed with AJAX request
+            if (isValid) {
                 var data = $('#appoinment').serialize();
-
-                console.log(data);
 
                 $.ajax({
                     type: 'POST',
-                    url: "{{route('appoinment.post')}}",
+                    url: "{{ route('appoinment.post') }}",
                     data: data,
                     success: function(response) { 
                         $('#appoinment')[0].reset();
@@ -648,9 +675,11 @@
                         console.log(error);
                     }
                 });
-            });
+            }
         });
-    </script>
+    });
+</script>
+
 </body>
 
 </html> 
