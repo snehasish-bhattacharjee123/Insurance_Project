@@ -156,6 +156,76 @@
     <!-- Facts End -->
 
 
+        <!-- Appointment Start -->
+        <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s" style="background">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                        <h1 class="display-6 text-white mb-5">We're Award Winning Insurance Company</h1>
+                        <p class="text-white mb-5">Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet. Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna.</p>
+                        <div class="bg-white rounded p-3">
+                            <div class="d-flex align-items-center bg-primary rounded p-3">
+                                <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" > 
+                                @if($experience)
+                                    <h5 class="text-white mb-0">Call Us: +91 {{$experience->about_contact}}</h5> 
+                                @else 
+                                    <h5 class="text-white mb-0">Call Us: +91 7980225928</h5>  
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="bg-white rounded p-5">
+                            <form id="appoinment"> 
+                                <div id="sendmessage" style="display:none;">Your appointment has been scheduled!</div>
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
+                                            <label for="gname">Your Name</label>
+                                            <span class="text-danger" id="nameError"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
+                                            <label for="schedule-date">Schedule Date</label>
+                                            <span class="text-danger" id="dateError"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" id="cname" name="number" placeholder="Your Mobile" oninput="this.value = this.value.slice(0,10)">
+                                            <label for="cname">Your Mobile</label>
+                                            <span class="text-danger" id="numberError"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cage" name="service" placeholder="Service Type">
+                                            <label for="cage">Service Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
+                                            <label for="message">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button id="form-button" class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
+                                    </div>
+                                </div>
+                            </form>
+    
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appointment End -->
+
     <!-- Features Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -306,75 +376,7 @@
     <!-- Service End -->
 
 
-    <!-- Appointment Start -->
-    <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <h1 class="display-6 text-white mb-5">We're Award Winning Insurance Company</h1>
-                    <p class="text-white mb-5">Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet. Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna.</p>
-                    <div class="bg-white rounded p-3">
-                        <div class="d-flex align-items-center bg-primary rounded p-3">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" > 
-                            @if($experience)
-                                <h5 class="text-white mb-0">Call Us: +91 {{$experience->about_contact}}</h5> 
-                            @else 
-                                <h5 class="text-white mb-0">Call Us: +91 7980225928</h5>  
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="bg-white rounded p-5">
-                        <form id="appoinment"> 
-                            <div id="sendmessage" style="display:none;">Your appointment has been scheduled!</div>
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
-                                        <label for="gname">Your Name</label>
-                                        <span class="text-danger" id="nameError"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
-                                        <label for="schedule-date">Schedule Date</label>
-                                        <span class="text-danger" id="dateError"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control" id="cname" name="number" placeholder="Your Mobile" oninput="this.value = this.value.slice(0,10)">
-                                        <label for="cname">Your Mobile</label>
-                                        <span class="text-danger" id="numberError"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="cage" name="service" placeholder="Service Type">
-                                        <label for="cage">Service Type</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 80px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button id="form-button" class="btn btn-primary py-3 px-5" type="submit">Get Appointment</button>
-                                </div>
-                            </div>
-                        </form>
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
 
 
     <!-- Team Start -->
