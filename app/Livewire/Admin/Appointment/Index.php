@@ -8,6 +8,9 @@ use Livewire\WithPagination;
 
 class Index extends Component
 { 
+
+    public $appointment_id;
+
     use WithPagination; 
     protected $paginationTheme = 'bootstrap';
     public function render()
@@ -23,6 +26,26 @@ class Index extends Component
         $appointment->save();  
         session()->flash('messege','Appointment Seen'); 
         $this->dispatch('AppoinmentNotification-Updated');
+
+    }
+
+    public function delete($id)
+    {
+        $this->appointment_id =  $id;
+        
+    }
+
+    public function destroy()
+    {
+        $appointment = Appointment::find($this->appointment_id);
+
+        if($appointment)
+        {
+            $appointment->delete();
+        }
+        session()->flash('deleted','Appointment Deleted Successfully'); 
+        $this->dispatch('AppoinmentNotification-Updated');
+        $this->dispatch('model-close');
 
     }
 }

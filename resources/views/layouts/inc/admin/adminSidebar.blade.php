@@ -1,14 +1,14 @@
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">
+    <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+      <a class="nav-link " href="{{route('admin.dashboard')}}">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li> 
     
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('slider.index') ? 'active' : '' }}">
       <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
         <i class="mdi mdi-animation menu-icon"></i>
         <span class="menu-title">Slider</span>
@@ -16,7 +16,7 @@
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{route('slider.index')}}">View All Slider</a></li>
+          <li class="nav-item {{ request()->routeIs('slider.index') ? 'active' : '' }}"> <a class="nav-link" href="{{route('slider.index')}}">View All Slider</a></li>
           </li>
         </ul> 
 
