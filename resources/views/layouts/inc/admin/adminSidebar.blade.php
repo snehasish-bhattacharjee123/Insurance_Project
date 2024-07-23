@@ -48,12 +48,12 @@
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
         <i class="mdi mdi-chart-pie menu-icon"></i>
-        <span class="menu-title">Brands</span>
+        <span class="menu-title">About</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="charts">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="">View Brands</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('about.index')}}">View About</a></li>
         </ul>
       </div>
     </li>
