@@ -48,51 +48,54 @@
                         Users Appointment
                     </h2>
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <th>Sr No</th>
-                            <th>User Name</th>
-                            <th>User Date</th>
-                            <th>Usre Contact</th>
-                            <th>User Service</th>
-                            <th>User Message</th>
-                            <th>View</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            ?>
-                            @foreach ($appointment as $a)
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $a->appointment_name }}</td>
-                                    <td>{{ $a->appointment_date }}</td>
-                                    <td>{{ $a->appointment_number }}</td>
-                                    <td>{{ $a->appointment_service }}</td>
-                                    <td>
-                                        <div class="truncate-text" title="{{ $a->appointment_message }}">
-                                            {{ $a->appointment_message }}</div>
-                                    </td>
-                                    <td>
-                                        @if ($a->appointment_view == 'seen')
-                                            <p class="text text-warning text-center" style="font-size: 20px;">Seen</p>
-                                        @else
-                                            <button wire:click="appointment_view({{ $a->id }})" type="button"
-                                                class="btn btn-outline-success">
-                                                Mark as Seen
-                                            </button>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <button wire:click="delete({{ $a->id }})" class="btn btn-danger"
-                                            data-bs-toggle="modal" data-bs-target="#DeleteApp">Delete</button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="card-body"> 
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <th>Sr No</th>
+                                <th>User Name</th>
+                                <th>User Date</th>
+                                <th>Usre Contact</th>
+                                <th>User Service</th>
+                                <th>User Message</th>
+                                <th>View</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                ?>
+                                @foreach ($appointment as $a)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $a->appointment_name }}</td>
+                                        <td>{{ $a->appointment_date }}</td>
+                                        <td>{{ $a->appointment_number }}</td>
+                                        <td>{{ $a->appointment_service }}</td>
+                                        <td>
+                                            <div class="truncate-text" title="{{ $a->appointment_message }}">
+                                                {{ $a->appointment_message }}</div>
+                                        </td>
+                                        <td>
+                                            @if ($a->appointment_view == 'seen')
+                                                <p class="text text-warning text-center" style="font-size: 20px;">Seen</p>
+                                            @else
+                                                <button wire:click="appointment_view({{ $a->id }})" type="button"
+                                                    class="btn btn-outline-success">
+                                                    Mark as Seen
+                                                </button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button wire:click="delete({{ $a->id }})" class="btn btn-danger"
+                                                data-bs-toggle="modal" data-bs-target="#DeleteApp">Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        
+                    </div>
 
                     {{ $appointment->links() }}
                 </div>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Livewire\Admin\AboutExp\About;
-use Illuminate\Http\Request;
+use App\Models\About;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -20,51 +21,42 @@ class AboutController extends Controller
 
     public function store(Request $request)
     {
-        // dd("hi");
 
-        $validatedData = $request->validate([
+       $request->validate([
             'name' => 'required',
             'slider_image' => 'required',
             'profile_image' => 'required',
             'experience' => 'required',
-            'number' => 'required',
+            'phone' => 'required',
             'heading_about' => 'required',
-            'about_contact' => 'required',
             'description' => 'required',
         ]);
-
-        // dd($validatedData);
-
         
-
+        $about = About::first();
+        if (!$about) {
+            $about = new About();
+        }
 
         if ($request->hasFile('slider_image')) {
-            $validatedData['slider_image'] = $request->file('slider_image')->store('about', 'public');
+            $imagePath = time().'.'.$request->slider_image->extension(); 
+            $request->slider_image->move(public_path('assets/adminpanel/about/slider'),$imagePath); 
+            $about->slider = $imagePath;
         }
         if ($request->hasFile('profile_image')) {
-            $validatedData['profile_image'] = $request->file('profile_image')->store('about', 'public');
+            $imagePath = time().'.'.$request->profile_image->extension(); 
+            $request->profile_image->move(public_path('assets/adminpanel/about/profile'),$imagePath); 
+            $about->image = $imagePath;
         }
         if ($request->hasFile('image_social')) {
-            $validatedData['image_social'] = $request->file('image_social')->store('about', 'public');
-        }
-
-       
-
-
-        $about = About::first();
-
-        // dd($about);
-        if (!$about) {
-            $about = new About;
+            $imagePath = time().'.'.$request->image_social->extension(); 
+            $request->image_social->move(public_path('assets/adminpanel/about/social'),$imagePath); 
+            $about->image_social = $imagePath;
         }
 
         $about->name = $request->name;
         $about->Designation_title = $request->Designation_title;
-        $about->slider = $request->slider_image;
-        $about->image = $request->profile_image;
-        $about->image_social = $request->image_social;
         $about->experience = $request->experience;
-        $about->number = $request->number;
+        $about->number = $request->phone;
         $about->heading_about = $request->heading_about;
         $about->highlight_description = $request->highlight_description;
         $about->description = $request->description;
@@ -72,7 +64,7 @@ class AboutController extends Controller
 
         $about->save();
 
-        return redirect()->route('about.index')->with('message', 'Experience Added Successfully');
+        return redirect()->route('about.index')->with('messege', 'About Added Successfully!');
         
     }
 }

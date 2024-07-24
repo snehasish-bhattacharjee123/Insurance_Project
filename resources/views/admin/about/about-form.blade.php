@@ -10,7 +10,7 @@
                     </h2>
                 </div> 
                 <div class="card-body">  
-                    <form action="{{route('about.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('about.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Mobile Number</label> 
-                                <input type="number" class="form-control" name="number" oninput="this.value = this.value.slice(0,10)">
+                                <input type="number" class="form-control" name="phone" oninput="this.value = this.value.slice(0,10)">
                                 @error('number')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
