@@ -11,10 +11,16 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <th>Sr No</th>
-                            <th>About Image</th>
-                            <th>About Experience</th>
+                            <th>Slider Image</th>
+                            <th>Profile Image</th>
+                            <th>Experience</th>
+                            <th>Heading</th>
+                            <th>Highlited Description</th>
+                            <th>Description</th>
                             <th>About Contact</th>
-                            <th>Status</th>
+                            <th>Social Media Image</th>
+                            <th>Name</th>
+                            <th>Designation</th>
                             <th>Action</th>
                         </thead> 
                         <tbody>

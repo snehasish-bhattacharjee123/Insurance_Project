@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\About;
 
+use App\Models\About;
 use Livewire\Component;
 
 class Index extends Component

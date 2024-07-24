@@ -28,6 +28,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::get('/about/index',[\App\Http\Controllers\Admin\AboutController::class,'index'])->name('about.index');
     Route::get('/about/create',[\App\Http\Controllers\Admin\AboutController::class,'create'])->name('about.create');
+    Route::post('/about/store',[\App\Http\Controllers\Admin\AboutController::class,'store'])->name('about.store');
 
     Route::get('/admin', function () {
     return view('admin.hello');
