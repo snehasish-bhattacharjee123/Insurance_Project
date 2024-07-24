@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/ 
+*/  
+// hiiii
 
 Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('first.page');
 Route::get('/about',[\App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('about.page');
