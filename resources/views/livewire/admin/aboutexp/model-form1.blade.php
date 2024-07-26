@@ -92,8 +92,7 @@
                         @if (!empty($current_image)) 
                             @foreach($image as $index=>$img)  
                                 <div class="image-container" style="display: inline-block; text-align: center; margin-right: 10px;">
-                                    <img src="{{ asset('storage/about/' . $img) }}" alt="Experience image"
-                                        class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
+                                    <img src="{{ asset('storage/about/' . $img) }}" alt="Experience image" class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
                                     <a wire:click="particularImageDelete({{ $index }}, '{{ $img }}')" class="my-3 d-block" style="text-decoration: none; cursor:pointer;" onclick="window.alert('Are You Sure You Want To Delete This Image?')">Delete</a> 
                                 </div>
 
