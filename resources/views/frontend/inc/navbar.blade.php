@@ -7,19 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
+                <a href="{{route('post.page')}}" class="nav-item nav-link pink-animation {{ Request::routeIs('post.page') ? 'active' : '' }}">Posts</a>
                 <a href="{{route('first.page')}}" class="nav-item nav-link {{ Request::routeIs('first.page') ? 'active' : '' }}">Home</a>
                 <a href="{{route('about.page')}}" class="nav-item nav-link {{ Request::routeIs('about.page') ? 'active' : '' }}">About Us</a>
                 <a href="service.html" class="nav-item nav-link">Our Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu bg-light border-0 m-0">
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                        <a href="team.html" class="dropdown-item">Team Members</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
+                
                 <a href="contact.html" class="nav-item nav-link">Contact Us</a>
             </div>
         </div>

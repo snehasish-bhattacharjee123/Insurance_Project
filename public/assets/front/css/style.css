@@ -479,4 +479,79 @@
     padding: 15px;
     font-weight: 600;
     margin-bottom: 15px;
+} 
+@keyframes pinkBackground {
+    0% {
+        background-color: darkpink; 
+    }
+    50% {
+        background-color: lightpink;
+    }
+    100% {
+        background-color: darkpink;
+    }
+}
+
+.nav-item.nav-link.pink-animation {
+    animation: pinkBackground 3s infinite;
+}
+
+.pink-animation{ 
+    width: 62px;
+    text-align: center;
+    border-radius: 25px;
+} 
+.card-container{  
+    margin-top: 70px;
+    display: flex; 
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center; 
+    
+}
+.card{   
+    /* justify-content: center; */
+    height: 550px; 
+    width: 350px; 
+    background: #e4eaeef1; 
+    border-radius: 15px;
+}  
+.card-image img{  
+    margin-top: 7px;
+    width: 350px; 
+    height: 300px; 
+    border-radius: 15px;
+}  
+.card-profile-image{ 
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    padding: 10px;
+}
+.card-profile-image img{ 
+    height: 45px; 
+    border-radius: 50%;
+} 
+.profile-name{ 
+    font-size: 15px; 
+    color: #050505;
+} 
+.profile-caption p{ 
+    display: flex; 
+    margin-top: 2px; 
+    margin-left: 13px;
+} 
+.description{ 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.description span{ 
+    margin-top: 8px; 
+    font-size: 14px;  
+    font-weight: 400; 
+    color: rgba(14, 45, 71, 0.815);
+    margin-left: 20px; 
+    margin-bottom: 5px;
 }
