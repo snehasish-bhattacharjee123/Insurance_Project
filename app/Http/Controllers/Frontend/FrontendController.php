@@ -40,10 +40,10 @@ class FrontendController extends Controller
         $appoinmnet->save();
         return response()->json(['message' => 'Your appointment has been scheduled!'], 200);
     } 
-    public function about()
-    { 
-        return view('frontend.about');
-    }
+    // public function about()
+    // { 
+    //     return view('frontend.about');
+    // }
        
  
 

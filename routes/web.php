@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */  
 
 Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('first.page');
-Route::get('/about',[\App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('about.page');
+Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about.page');
 Route::post('/appoinment',[\App\Http\Controllers\Frontend\FrontendController::class, 'appoinment'])->name('appoinment.post');
 
 Route::get('/login',[\App\Http\Controllers\auth\LoginController::class ,'showLoginForm'])->name('login.form'); 
