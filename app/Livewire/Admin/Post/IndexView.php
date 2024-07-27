@@ -19,8 +19,7 @@ class IndexView extends Component
 
     public function render()
     { 
-        $post = Post::all();
-        // dd($post);
+        $post = Post::orderBy('id','DESC')->paginate(5);
         return view('livewire.admin.post.index-view',['post'=>$post]);
     }
 

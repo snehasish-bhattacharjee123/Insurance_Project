@@ -43,67 +43,69 @@
                     </h2>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <th>Sr No</th>
-                            <th>Post Image</th>
-                            <th>Post Caption</th>
-                            <th>Post Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            ?>
-                            @foreach ($post as $p)
-                                <tr>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <th>Sr No</th>
+                                <th>Post Image</th>
+                                <th>Post Caption</th>
+                                <th>Post Description</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                ?>
+                                @foreach ($post as $p)
+                                    <tr>
 
-                                    <td>{{ $i++ }}</td>
-                                    <td><img src="{{ asset('storage/post/' . $p->posts_image) }}"
-                                            class="rounded mx-auto d-block"
-                                            style="height: 100px; width: 100px; background-size: cover" alt="">
-                                    </td>
-                                    
-                                    <td>{{ $p->caption }}</td>
+                                        <td>{{ $i++ }}</td>
+                                        <td><img src="{{ asset('storage/post/' . $p->posts_image) }}"
+                                                class="rounded mx-auto d-block"
+                                                style="height: 100px; width: 100px; background-size: cover" alt="">
+                                        </td>
+                                        
+                                        <td>{{ $p->caption }}</td>
 
-                                    <td>{{ $p->description }}</td>
-                                    <td>
-                                        @php
-                                            $text = '';
-                                            $class = '';
-                                        @endphp
-
-                                        @if ($p->status == 1)
+                                        <td>{{ $p->description }}</td>
+                                        <td>
                                             @php
-                                                $text = 'Active';
-                                                $class = 'success';
+                                                $text = '';
+                                                $class = '';
                                             @endphp
-                                        @else($p->status == 0)
-                                            @php
-                                                $text = 'In Active';
-                                                $class = 'danger';
-                                            @endphp
-                                        @endif
-                                        <p class="text-{{ $class }}">{{ $text }}</p>
-                                    </td>
 
-                                    <td>
+                                            @if ($p->status == 1)
+                                                @php
+                                                    $text = 'Active';
+                                                    $class = 'success';
+                                                @endphp
+                                            @else($p->status == 0)
+                                                @php
+                                                    $text = 'In Active';
+                                                    $class = 'danger';
+                                                @endphp
+                                            @endif
+                                            <p class="text-{{ $class }}">{{ $text }}</p>
+                                        </td>
 
-                                        <button wire:click="delete({{ $p->id }})" class="btn btn-danger"
-                                            data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
-                                        <button wire:click="edit({{ $p->id }})" class="btn btn-success my-3"
-                                            data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
-                                    </td>
+                                        <td>
+
+                                            <button wire:click="delete({{ $p->id }})" class="btn btn-danger"
+                                                data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
+                                            <button wire:click="edit({{ $p->id }})" class="btn btn-success my-3"
+                                                data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
+                                        </td>
 
 
 
 
-                                </tr> 
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{-- {{ $slider->links() }} --}}
+                                    </tr> 
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    {{ $post->links() }}
                 </div>
             </div>
         </div>
