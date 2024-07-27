@@ -35,6 +35,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::post('/about/update/{id}',[\App\Http\Controllers\Admin\AboutController::class,'update'])->name('about.update'); 
 
     Route::get('/profile',[\App\Http\Controllers\Admin\ProfileController::class,'create'])->name('profile.create');
+    Route::post('/profile/store',[\App\Http\Controllers\Admin\ProfileController::class,'store'])->name('profile.store');
+    Route::post('/profile/image/store',[\App\Http\Controllers\Admin\ProfileController::class,'image_store'])->name('profile.image.store');
 
     Route::get('/dashboard', function () {
     return view('admin.hello');

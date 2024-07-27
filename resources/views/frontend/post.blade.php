@@ -1,47 +1,31 @@
 @extends('frontend.exc.extend')
 
-@section('content')
-    <div class="card-container">
-        <div class="card">
-            <div class="card-profile-image">
-                <img src="suman.jpg" alt="">
-                <h2 class="profile-name">Suman Roy</h2>
+@section('content')  
+   
+    @forelse($post as $p)
+        <div class="card-container">
+            <div class="card">
+                <div class="card-profile-image">
+                    <img src="{{asset('assets/adminpanel/profile/image/'.$user->profile_image)}}" alt="" style="object-fit: cover;">
+                    <h2 class="profile-name">{{$user->name}}</h2>
+                </div>
+                <div class="profile-caption">
+                    <p class="short-text" data-full-text="{{$p->caption}}">
+                    </p>
+                    <a href="javascript:void(0);" class="more-link" onclick="toggleText(this)">See more</a>
+                </div>
+                <div class="card-image">
+                    <img src="{{asset('storage/post/'.$p->posts_image)}}" alt="" style="object-fit: cover;">
+                </div>
+                <div class="description">
+                    <span class="long-text" data-full-text="{{$p->description}}"></span>
+                    <a href="javascript:void(0);" class="more-link-description" onclick="toggleDescriptionText(this)" style="margin-left: 10px; margin-bootom: 20px;">See more</a>
+                </div>
             </div>
-            <div class="profile-caption">
-                <p class="short-text" data-full-text="Lorem ipsum dolor sit amet  suman sumansumansumansumansumansumansumansumansumansumansumansuman">
-                </p>
-                <a href="javascript:void(0);" class="more-link" onclick="toggleText(this)">See more</a>
-            </div>
-            <div class="card-image">
-                <img src="iphone.webp" alt="" style="object-fit: cover;">
-            </div>
-            <div class="description">
-                <span class="long-text" data-full-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum doloremque facere distinctio, voluptates numquam sunt eligendi dignissimos cum repudiandae explicabo, excepturi doloribus eaque veritatis animi laudantium illum vero iusto qui?"></span>
-                <a href="javascript:void(0);" class="more-link-description" onclick="toggleDescriptionText(this)" style="margin-left: 10px; margin-bootom: 20px;">See more</a>
-            </div>
-        </div>
-    </div>
-    <div class="card-container">
-        <div class="card">
-            <div class="card-profile-image">
-                <img src="suman.jpg" alt="">
-                <h2 class="profile-name">Suman Roy</h2>
-            </div>
-            <div class="profile-caption">
-                <p class="short-text" data-full-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit...">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                </p>
-                <a href="javascript:void(0);" class="more-link" onclick="toggleText(this)">See more</a>
-            </div>
-            <div class="card-image">
-                <img src="iphone.webp" alt="" style="object-fit: cover;">
-            </div>
-            <div class="description">
-                <span class="long-text" data-full-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum doloremque facere distinctio, voluptates numquam sunt eligendi dignissimos cum repudiandae explicabo, excepturi doloribus eaque veritatis animi laudantium illum vero iusto qui?"></span>
-                <a href="javascript:void(0);" class="more-link-description" onclick="toggleDescriptionText(this)" style="margin-left: 10px; margin-bootom: 20px;">See more</a>
-            </div>
-        </div>
-    </div>
+        </div> 
+    @empty
+       <p class="text text-primary text-center" style="font-size: 35px; font-weight: 700; margin-top:35px">No Posts Available!</p> 
+    @endforelse
 
     <script>
         function toggleText(link) {

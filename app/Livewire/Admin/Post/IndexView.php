@@ -52,6 +52,7 @@ class IndexView extends Component
         $post->save();  
         session()->flash('messege','Post Added Successfully'); 
         $this->dispatch('model-close'); 
+        $this->resetField();
 
     } 
     public function resetField()
