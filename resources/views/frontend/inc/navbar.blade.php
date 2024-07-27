@@ -15,5 +15,5 @@
                 <a href="contact.html" class="nav-item nav-link">Contact Us</a>
             </div>
         </div>
-        <a href="" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>
+        {{--<a href="" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>--}}
     </nav>
