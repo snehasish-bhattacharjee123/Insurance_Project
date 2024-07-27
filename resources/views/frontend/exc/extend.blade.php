@@ -4,3 +4,4 @@
 @yield('content')
 
 @include('frontend.inc.footer')
+@yield('script')
