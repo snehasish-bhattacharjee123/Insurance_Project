@@ -1,4 +1,5 @@
 /********** Template CSS **********/
+
 :root {
     --primary: #015FC9;
     --secondary: #0DD3F1;
@@ -79,6 +80,10 @@
 
 
 /*** Navbar ***/
+.navbar {
+    background-color: #ffffff;
+    color: #000000;
+}
 .navbar.sticky-top {
     top: -100px;
     transition: .5s;
@@ -94,7 +99,16 @@
     color: #696E77;
     font-weight: 500;
     outline: none;
+    
 }
+
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
@@ -480,6 +494,7 @@
     font-weight: 600;
     margin-bottom: 15px;
 } 
+
 @keyframes pinkBackground {
     0% {
         background-color: darkpink; 
@@ -501,57 +516,76 @@
     text-align: center;
     border-radius: 25px;
 } 
-.card-container{  
+.card-container {
     margin-top: 70px;
-    display: flex; 
-    flex-direction: column;  
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; 
-    
+    align-items: center;
 }
-.card{   
-    /* justify-content: center; */
-    height: 550px; 
-    width: 350px; 
-    background: #e4eaeef1; 
+
+.card {
+    height: auto; /* Allow card height to adjust based on content */
+    width: 350px;
+    background: #e4eaeef1;
     border-radius: 15px;
-}  
-.card-image img{  
-    margin-top: 7px;
-    width: 350px; 
-    height: 300px; 
-    border-radius: 15px;
-}  
-.card-profile-image{ 
-    display: flex; 
-    align-items: center; 
+    overflow: hidden; /* Ensure content does not overflow */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+}
+
+.card-image img {
+    width: 100%;
+    height: 300px;
+    /* border-radius: 15px; */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.card-profile-image {
+    display: flex;
+    align-items: center;
     gap: 10px;
     padding: 10px;
 }
-.card-profile-image img{ 
-    height: 45px; 
-    border-radius: 50%;
-} 
-.profile-name{ 
-    font-size: 15px; 
-    color: #050505;
-} 
-.profile-caption p{ 
-    display: flex; 
-    margin-top: 2px; 
-    margin-left: 13px;
-} 
-.description{ 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center;
+
+.card-profile-image img {
+    height: 45px; /* Fixed height */
+    width: 45px; /* Fixed width to ensure the image is square */
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover; /* Ensures the image covers the element while maintaining aspect ratio */
 }
 
-.description span{ 
-    margin-top: 8px; 
-    font-size: 14px;  
-    font-weight: 400; 
-    color: rgba(14, 45, 71, 0.815);
-    margin-left: 20px; 
-    margin-bottom: 5px;
+.profile-name {
+    font-size: 15px;
+    color: #050505;
+}
+
+.profile-caption {
+    padding: 10px;
+    transition: max-height 0.3s ease; /* Smooth transition for expanding text */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.short-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-height: 60px; /* Adjust this to the height of the visible part */
+}
+
+.short-text.expanded {
+    white-space: normal;
+    max-height: none; /* Allow full height when expanded */
+}
+
+.more-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.description span{
+    display: flex;
+    padding: 10px;
 }
