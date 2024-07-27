@@ -30,25 +30,25 @@
 
 
 
-    @include('livewire.admin.slider.model-form')
+    @include('livewire.admin.post.post-modal-form')
     
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h2>
-                        All Slider
+                        All Posts
                         <a href="#" class="btn btn-primary float-end btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#AddSlider">Add Slider</a>
+                            data-bs-target="#AddPost">Add Posts</a>
                     </h2>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <th>Sr No</th>
-                            <th>Slider Image</th>
-                            <th>Slider Title</th>
-                            <th>Slider Description</th>
+                            <th>Post Image</th>
+                            <th>Post Caption</th>
+                            <th>Post Description</th>
                             <th>Status</th>
                             <th>Action</th>
                         </thead>
@@ -56,28 +56,30 @@
                             <?php
                             $i = 1;
                             ?>
-                            @foreach ($slider as $s)
+                            @foreach ($post as $p)
                                 <tr>
 
                                     <td>{{ $i++ }}</td>
-                                    <td><img src="{{ asset('storage/slider/' . $s->slider_image) }}"
+                                    <td><img src="{{ asset('storage/post/' . $p->posts_image) }}"
                                             class="rounded mx-auto d-block"
                                             style="height: 100px; width: 100px; background-size: cover" alt="">
                                     </td>
-                                    <td>{{ $s->slider_title }}</td>
-                                    <td>{{ $s->slider_description }}</td>
+                                    
+                                    <td>{{ $p->caption }}</td>
+
+                                    <td>{{ $p->description }}</td>
                                     <td>
                                         @php
                                             $text = '';
                                             $class = '';
                                         @endphp
 
-                                        @if ($s->status == 1)
+                                        @if ($p->status == 1)
                                             @php
                                                 $text = 'Active';
                                                 $class = 'success';
                                             @endphp
-                                        @else($s->status == 0)
+                                        @else($p->status == 0)
                                             @php
                                                 $text = 'In Active';
                                                 $class = 'danger';
@@ -88,20 +90,20 @@
 
                                     <td>
 
-                                        <button wire:click="delete({{ $s->id }})" class="btn btn-danger"
+                                        <button wire:click="delete({{ $p->id }})" class="btn btn-danger"
                                             data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
-                                        <button wire:click="edit({{ $s->id }})" class="btn btn-success my-3"
+                                        <button wire:click="edit({{ $p->id }})" class="btn btn-success my-3"
                                             data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
                                     </td>
 
 
 
 
-                                </tr>
+                                </tr> 
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $slider->links() }}
+                    {{-- {{ $slider->links() }} --}}
                 </div>
             </div>
         </div>
@@ -110,7 +112,7 @@
 @push('script')
     <script>
         window.addEventListener('model-close', event => {
-            $('#AddSlider').modal('hide');
+            $('#AddPost').modal('hide');
             $('#DeleteModal').modal('hide');
             $('#EditModal').modal('hide');
         });

@@ -34,9 +34,6 @@ class Index extends Component
         $imageName = time() . '.' . $this->slider_image->extension();
         $imagePath = $this->slider_image->storeAs('slider', $imageName, 'public');
         
-
-        
-
         $statusCheck = $this->status;  
         $status = 0;
 

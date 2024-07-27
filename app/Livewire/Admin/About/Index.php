@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\File;
 class Index extends Component
 {
 
-     
     protected $paginationTheme = 'bootstrap';
 
     public $about_id;

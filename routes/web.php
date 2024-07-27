@@ -25,7 +25,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::get('/slider/index',[\App\Http\Controllers\Admin\SliderController::class,'index'])->name('slider.index');
     Route::get('/experience',[\App\Http\Controllers\Admin\AdminAboutController::class,'about'])->name('aboutexp.about'); 
-    Route::get('/appointment/details/users',App\Livewire\Admin\Appointment\Index::class)->name('appoinment.users'); 
+    Route::get('/appointment/details/users',App\Livewire\Admin\Appointment\Index::class)->name('appoinment.users');
+    Route::get('/post/index',[\App\Http\Controllers\Admin\PostAdminController::class,'index'])->name('post.index'); 
 
     Route::get('/about/index',[\App\Http\Controllers\Admin\AboutController::class,'index'])->name('about.index');
     Route::get('/about/create',[\App\Http\Controllers\Admin\AboutController::class,'create'])->name('about.create');
