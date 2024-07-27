@@ -99,11 +99,11 @@
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-warning">
-                <i class="mdi mdi-weather-sunny mx-0"></i>
+                <i class="mdi mdi-account mx-0"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">Settings</h6>
+              <h6 class="preview-subject font-weight-normal">Profile</h6>
               <p class="font-weight-light small-text mb-0 text-muted">
                 Private message
               </p>
@@ -130,9 +130,9 @@
           <span class="nav-profile-name"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-          <a class="dropdown-item">
-            <i class="mdi mdi-cog text-primary"></i>
-            Settings
+          <a class="dropdown-item" href="{{route('profile.create')}}">
+            <i class="mdi mdi-account text-primary" style="font-size: 20px;"></i>
+            Profile
           </a> 
           <form action="" method="POST" style="display: none;"  id="logout"> 
             @csrf 
