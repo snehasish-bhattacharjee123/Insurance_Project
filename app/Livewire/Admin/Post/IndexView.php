@@ -28,7 +28,6 @@ class IndexView extends Component
         $this->validate([ 
             'posts_image' => 'required',
             'caption' => 'required',
-            // 'description' => 'required',
         ]);  
 
         
