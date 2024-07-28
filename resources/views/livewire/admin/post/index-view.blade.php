@@ -7,7 +7,7 @@
         <div class="alert alert-danger text-danger" role="alert">{{ session('deleted') }}</div>
     @endif
 
-    <div wire:ignore.self class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div wire:ignore.self class="modal fade" id="DeletePost" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -92,9 +92,9 @@
                                         <td>
 
                                             <button wire:click="delete({{ $p->id }})" class="btn btn-danger"
-                                                data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
+                                                data-bs-toggle="modal" data-bs-target="#DeletePost">Delete</button>
                                             <button wire:click="edit({{ $p->id }})" class="btn btn-success my-3"
-                                                data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
+                                                data-bs-toggle="modal" data-bs-target="#EditPost">Edit</button>
                                         </td>
 
 
@@ -115,8 +115,8 @@
     <script>
         window.addEventListener('model-close', event => {
             $('#AddPost').modal('hide');
-            $('#DeleteModal').modal('hide');
-            $('#EditModal').modal('hide');
+            $('#DeletePost').modal('hide');
+            $('#EditPost').modal('hide');
         });
     </script>
 @endpush

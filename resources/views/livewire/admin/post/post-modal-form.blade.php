@@ -48,12 +48,12 @@
 
 <!-- edit section -->
 
-<div wire:ignore.self class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div wire:ignore.self class="modal fade" id="EditPost" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Post</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="resetField()"
                     aria-label="Close"></button>
             </div>
@@ -67,22 +67,22 @@
             <div wire:loading.remove class="modal-body">
                 <form wire:submit.prevent="update()">
                     <div class="col-md-8 my-2">
-                        <label class="form-label">Slider Title</label>
-                        <input type="text" class="form-control" wire:model="slider_title">
-                        @error('slider_title')
+                        <label class="form-label">Post Caption</label>
+                        <input type="text" class="form-control" wire:model="caption">
+                        @error('caption')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-8 my-4">
-                        <label class="form-label">Slider Image</label>
-                        <input type="file" class="form-control" wire:model="slider_image">
+                        <label class="form-label">Post Image</label>
+                        <input type="file" class="form-control" wire:model="posts_image">
 
                         @if (!empty($current_image))
-                            <img src="{{ asset('storage/slider/' . $current_image) }}" alt="Slider Image"
+                            <img src="{{ asset('storage/post/' . $current_image) }}" alt="post Image"
                                 class="img-fluid mt-2" style="height: 100px; width: 100px; background-size: cover">
                         @endif
 
-                        @error('slider_image')
+                        @error('posts_image')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -93,9 +93,9 @@
 
 
                     <div class="col-md-12 my-4">
-                        <label class="form-label">Slider Description</label>
-                        <textarea type="text" class="form-control" wire:model="slider_description" role="2"> </textarea>
-                        @error('slider_description')
+                        <label class="form-label">Post Description</label>
+                        <textarea type="text" class="form-control" wire:model="description" role="2"> </textarea>
+                        @error('description')
                             <span class="text text-danger">{{ $message }}</span>
                         @enderror
                     </div>
