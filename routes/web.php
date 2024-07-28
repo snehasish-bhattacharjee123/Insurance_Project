@@ -37,6 +37,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/profile',[\App\Http\Controllers\Admin\ProfileController::class,'create'])->name('profile.create');
     Route::post('/profile/store',[\App\Http\Controllers\Admin\ProfileController::class,'store'])->name('profile.store');
     Route::post('/profile/image/store',[\App\Http\Controllers\Admin\ProfileController::class,'image_store'])->name('profile.image.store');
+    Route::post('/profile/password/update',[\App\Http\Controllers\Admin\ProfileController::class,'password_update'])->name('profile.password.update');
 
     Route::get('/dashboard', function () {
     return view('admin.hello');
