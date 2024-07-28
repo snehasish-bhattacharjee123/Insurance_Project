@@ -45,6 +45,6 @@ class ProfileController extends Controller
             $user->profile_image = $imagePath;
         }
         $user->save(); 
-        return redirect()->back()->with('message','Image Updated Successfully');
+        return redirect()->back()->with('message','Image Uploaded Successfully');
     }
 }

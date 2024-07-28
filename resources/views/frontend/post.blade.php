@@ -10,7 +10,7 @@
                     <h2 class="profile-name">{{$user->name}}</h2>
                 </div>
                 <div class="profile-caption">
-                    <p class="short-text" data-full-text="{{$p->caption}}">
+                    <p class="short-text" data-full-text="{{$p->caption}}" style="font-weight: 500;">
                     </p>
                     <a href="javascript:void(0);" class="more-link" onclick="toggleText(this)">See more</a>
                 </div>

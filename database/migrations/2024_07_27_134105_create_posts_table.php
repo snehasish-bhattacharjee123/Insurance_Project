@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('caption');
             $table->string('posts_image');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->integer('status')->comment('1 => Visible,  0 => Not Visible');
             $table->timestamps();
         });

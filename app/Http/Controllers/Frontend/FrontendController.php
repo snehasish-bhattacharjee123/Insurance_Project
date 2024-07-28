@@ -23,10 +23,8 @@ class FrontendController extends Controller
             'name' => 'required|string|max:255',
             'date' => 'required|date',
             'number' => 'required|string|max:255',
-            'service' => 'required|string|max:255',
-            'message' => 'nullable|string',
-
         ]);
+
 
     
         $appoinmnet = new Appointment; 

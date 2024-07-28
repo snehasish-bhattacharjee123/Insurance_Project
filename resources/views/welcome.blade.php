@@ -1,6 +1,12 @@
 
 @extends('frontend.exc.extend')
-@section('content') 
+@section('content')  
+<style>
+    .form-floating .required-label:after {
+        content: " *";
+        color: red;
+    }
+</style>
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
@@ -131,22 +137,22 @@
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="gname" name="name" placeholder="Guardian Name">
-                                            <label for="gname">Your Name</label>
+                                            <label for="gname" class="required-label">Your Name</label>
                                             <span class="text-danger" id="nameError"></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="date" class="form-control" id="schedule-date" name="date" placeholder="Schedule Date">
-                                            <label for="schedule-date">Schedule Date</label>
+                                            <label for="schedule-date" class="required-label">Schedule Date</label>
                                             <span class="text-danger" id="dateError"></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6"> 
                                         <div class="form-floating">
                                             <input type="number" class="form-control" id="cname" name="number" placeholder="Your Mobile" oninput="this.value = this.value.slice(0,10)">
-                                            <label for="cname">Your Mobile</label>
-                                            <span class="text-danger" id="numberError"></span>
+                                            <label for="cname" class="required-label">Your Mobile</label>
+                                            <span class="text-danger" id="numberError"></span> 
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

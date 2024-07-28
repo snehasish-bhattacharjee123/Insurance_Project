@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->string('appointment_name');
             $table->string('appointment_date');
             $table->string('appointment_number');
-            $table->string('appointment_service');
+            $table->string('appointment_service')->nullable();
             $table->text('appointment_message')->nullable();
             $table->string('appointment_view')->default('unseen');
             $table->timestamps();
