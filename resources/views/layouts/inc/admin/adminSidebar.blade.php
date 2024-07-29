@@ -37,17 +37,22 @@
     </li>
    
     <li class="nav-item {{ request()->routeIs('about.index') ? 'active' : '' }}">
-      <a class="nav-link " href="{{route('about.index')}}" aria-expanded="false" aria-controls="charts">
+      <a class="nav-link " href="{{route('about.index')}}">
         <i class="mdi mdi-chart-pie menu-icon"></i>
         <span class="menu-title">About</span>
       </a>
     </li>
 
     <li class="nav-item {{ request()->routeIs('post.index') ? 'active' : '' }}">
-      <a class="nav-link" href="{{route('post.index')}}" aria-expanded="false" aria-controls="tables">
+      <a class="nav-link" href="{{route('post.index')}}" aria-expanded="false" aria-controls="charts">
         <i class="mdi mdi-grid-large menu-icon"></i>
         <span class="menu-title">Post</span>
-        <i class="menu-arrow"></i>
+      </a>
+    </li>
+    <li class="nav-item {{ request()->routeIs('service.index') ? 'active' : '' }}">
+      <a class="nav-link" href="{{route('service.index')}}" aria-expanded="false" aria-controls="charts">
+        <i class="mdi mdi-book-multiple menu-icon"></i>
+        <span class="menu-title">Service</span>
       </a>
     </li>
 

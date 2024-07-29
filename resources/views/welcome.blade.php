@@ -10,8 +10,7 @@
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
-   
-        <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+     <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner"> 
                 @foreach($slider as $idex => $s) 
@@ -23,7 +22,6 @@
                                     <div class="col-12 col-lg-6">
                                         <h1 class="display-3 text-dark mb-4 animated slideInDown">{{$s->slider_title}}</h1>
                                         <p class="fs-5 text-body mb-5">{{$s->slider_description}}</p>
-                                        <a href="" class="btn btn-primary py-3 px-5">More Details</a>
                                     </div>
                                 </div>
                             </div>

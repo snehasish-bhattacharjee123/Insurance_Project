@@ -17,6 +17,7 @@ Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about.page');
 Route::get('/post',[\App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.page');
 Route::post('/appoinment',[\App\Http\Controllers\Frontend\FrontendController::class, 'appoinment'])->name('appoinment.post');
+Route::get('/product',[\App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('product/page');
 
 Route::get('/login',[\App\Http\Controllers\auth\LoginController::class ,'showLoginForm'])->name('login.form'); 
 Route::post('/login',[\App\Http\Controllers\auth\LoginController::class ,'loginUser'])->name('auth.login');
@@ -37,7 +38,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/profile',[\App\Http\Controllers\Admin\ProfileController::class,'create'])->name('profile.create');
     Route::post('/profile/store',[\App\Http\Controllers\Admin\ProfileController::class,'store'])->name('profile.store');
     Route::post('/profile/image/store',[\App\Http\Controllers\Admin\ProfileController::class,'image_store'])->name('profile.image.store');
-    Route::post('/profile/password/update',[\App\Http\Controllers\Admin\ProfileController::class,'password_update'])->name('profile.password.update');
+    Route::post('/profile/password/update',[\App\Http\Controllers\Admin\ProfileController::class,'password_update'])->name('profile.password.update'); 
+
+    Route::get('/service/index',[\App\Http\Controllers\Admin\ServiceController::class,'index'])->name('service.index');
+    Route::get('/service/create',[\App\Http\Controllers\Admin\ServiceController::class,'create'])->name('service.create');
+    Route::post('/service/store',[\App\Http\Controllers\Admin\ServiceController::class,'store'])->name('service.store');
 
     Route::get('/dashboard', function () {
     return view('admin.hello');
