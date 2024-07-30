@@ -1,12 +1,12 @@
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+    {{--<li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
       <a class="nav-link " href="{{route('admin.dashboard')}}">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
-    </li> 
+    </li>--}} 
     
     <li class="nav-item {{ request()->routeIs('slider.index') ? 'active' : '' }}">
       <a class="nav-link" href="{{route('slider.index')}}" aria-expanded="false" aria-controls="tables">
@@ -55,9 +55,15 @@
         <span class="menu-title">Service</span>
       </a>
     </li>
+    <li class="nav-item {{ request()->routeIs('product.index') ? 'active' : '' }}">
+      <a class="nav-link" href="{{route('product.index')}}" aria-expanded="false" aria-controls="charts">
+        <i class="mdi mdi-file-account menu-icon"></i>
+        <span class="menu-title">Product</span>
+      </a>
+    </li>
 
     <li class="nav-item"> 
-      <form action="" method="POST" class="d-flex:none" id="logout"> 
+      <form action="{{route('logout')}}" method="POST" class="d-flex:none" id="logout"> 
         @csrf 
       </form>
       <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">

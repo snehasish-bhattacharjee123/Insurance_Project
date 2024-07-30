@@ -4,19 +4,19 @@ namespace App\Livewire\Admin\Service;
 
 use App\Models\Service;
 use Livewire\Component;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\File; 
+use Livewire\WithPagination; 
 
 class Index extends Component
 {
-
+    use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
     public $service_id;
 
     public function render()
     { 
-        $service = Service::all();
-        // dd('$service');
+        $service = Service::orderBy('id','desc')->paginate(5);
         return view('livewire.admin.service.index',['service'=>$service]);
     }
 

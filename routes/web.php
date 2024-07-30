@@ -17,10 +17,11 @@ Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about.page');
 Route::get('/post',[\App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.page');
 Route::post('/appoinment',[\App\Http\Controllers\Frontend\FrontendController::class, 'appoinment'])->name('appoinment.post');
-Route::get('/product',[\App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('product/page');
+Route::get('/{service}/product',[\App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('product.page');
 
 Route::get('/login',[\App\Http\Controllers\auth\LoginController::class ,'showLoginForm'])->name('login.form'); 
 Route::post('/login',[\App\Http\Controllers\auth\LoginController::class ,'loginUser'])->name('auth.login');
+Route::post('/logout',[\App\Http\Controllers\auth\LoginController::class ,'logout'])->name('logout'); 
 
 Route::middleware('admin')->prefix('admin')->group(function () {  
 
@@ -45,8 +46,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::post('/service/store',[\App\Http\Controllers\Admin\ServiceController::class,'store'])->name('service.store');
     Route::get('/service/edit/{id}',[\App\Http\Controllers\Admin\ServiceController::class,'edit'])->name('service.edit');
     Route::post('/service/update/{id}',[\App\Http\Controllers\Admin\ServiceController::class,'update'])->name('service.update'); 
-
-    Route::get('/dashboard', function () {
-    return view('admin.hello');
-})->name('admin.dashboard'); 
+    
+    Route::get('/product/index',[\App\Http\Controllers\Admin\ProductController::class,'index'])->name('product.index');
+    Route::get('/product/create',[\App\Http\Controllers\Admin\ProductController::class,'create'])->name('product.create');
+    Route::post('/product/store',[\App\Http\Controllers\Admin\ProductController::class,'store'])->name('product.store');
+   
 });

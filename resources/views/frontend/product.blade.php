@@ -1,22 +1,44 @@
 @extends('frontend.exc.extend')
-@section('content')
+@section('content') 
+<style>
+    .page-header {
+        background-size: cover;
+        background-position: center center;
+    }
+
+    @media (min-width: 992px) {
+        .page-header {
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .page-header {
+            height: auto;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+    }
+</style>
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
-    <!-- Spinner End -->
-
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <!-- Spinner End -->  
+     @foreach($service as $s)
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" 
+            style="background: url('{{ asset('assets/adminpanel/service/'.$s->slider_image) }}') no-repeat center center; background-size: cover;">
             <div class="container py-5">
-                <h1 class="display-4 animated slideInDown mb-4">About Us</h1>
+                <h1 class="display-4 animated slideInDown mb-4">{{$s->title}}</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$s->title}}</li>
                     </ol>
                 </nav>
             </div>
-        </div> 
+        </div>
+    @endforeach
     <!-- Page Header End -->
 
 

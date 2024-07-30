@@ -22,7 +22,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password'); 
         
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('profile.create');
         }
         return redirect()->route('login.form')->with('error', 'Credentials do not match.');
           
@@ -34,6 +34,6 @@ class LoginController extends Controller
         $request->session()->invalidate(); 
         $request->session()->regenerateToken(); 
 
-        return redirect('/'); // Redirect to the login page
+        return redirect('/');
     }
 }

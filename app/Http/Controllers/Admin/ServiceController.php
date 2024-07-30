@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     public function index(){ 
-        // dd('hi');
         return view('admin.service.index');
     } 
     public function create(){ 
@@ -33,7 +32,7 @@ class ServiceController extends Controller
         $service->description = $request->description;
         $service->meta_title = $request->meta_title; 
         $service->save(); 
-        return redirect()->route('service.index')->with('message','Service Created Successfully');
+        return redirect()->route('service.index')->with('messege','Service Created Successfully');
     }
 
     public function edit($id)
@@ -78,7 +77,7 @@ class ServiceController extends Controller
 
         $service->save();
 
-        return redirect()->route('service.index')->with('messege', 'About Added Successfully!');
+        return redirect()->route('service.index')->with('messege', 'Service Updated Successfully!');
     }
 
 }

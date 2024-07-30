@@ -77,7 +77,7 @@
                                 @endforelse
                             </tbody>
                         </table>
-
+                        {{$service->links()}}
                     </div>
 
                 </div>

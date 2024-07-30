@@ -38,7 +38,7 @@
             <i class="mdi mdi-account text-primary" style="font-size: 20px;"></i>
             Profile
           </a> 
-          <form action="" method="POST" style="display: none;"  id="logout"> 
+          <form action="{{route('logout')}}" method="POST" style="display: none;"  id="logout"> 
             @csrf 
           </form>
           <a href="#" class="dropdown-item"  onclick="event.preventDefault(); document.getElementById('logout').submit();">
