@@ -43,6 +43,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/service/index',[\App\Http\Controllers\Admin\ServiceController::class,'index'])->name('service.index');
     Route::get('/service/create',[\App\Http\Controllers\Admin\ServiceController::class,'create'])->name('service.create');
     Route::post('/service/store',[\App\Http\Controllers\Admin\ServiceController::class,'store'])->name('service.store');
+    Route::get('/service/edit/{id}',[\App\Http\Controllers\Admin\ServiceController::class,'edit'])->name('service.edit');
+    Route::post('/service/update/{id}',[\App\Http\Controllers\Admin\ServiceController::class,'update'])->name('service.update'); 
 
     Route::get('/dashboard', function () {
     return view('admin.hello');
