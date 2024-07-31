@@ -50,5 +50,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/product/index',[\App\Http\Controllers\Admin\ProductController::class,'index'])->name('product.index');
     Route::get('/product/create',[\App\Http\Controllers\Admin\ProductController::class,'create'])->name('product.create');
     Route::post('/product/store',[\App\Http\Controllers\Admin\ProductController::class,'store'])->name('product.store');
-   
+    Route::get('/product/edit/{id}',[\App\Http\Controllers\Admin\ProductController::class,'edit'])->name('product.edit');
+    Route::post('/product/{id}/update',[\App\Http\Controllers\Admin\ProductController::class,'update'])->name('product.update');
 });

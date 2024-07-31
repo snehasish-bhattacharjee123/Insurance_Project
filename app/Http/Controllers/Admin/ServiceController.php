@@ -20,6 +20,7 @@ class ServiceController extends Controller
             'meta_title'=> 'required',
             'description'=> 'required',
             'slider_image'=> 'required',
+            'status' => 'required',
         ]);
 
         $service = new Service; 
@@ -31,6 +32,7 @@ class ServiceController extends Controller
         $service->slider_image = $image;
         $service->description = $request->description;
         $service->meta_title = $request->meta_title; 
+        $service->status = $request->has('status') ? 1:0;
         $service->save(); 
         return redirect()->route('service.index')->with('messege','Service Created Successfully');
     }
@@ -72,8 +74,7 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->meta_title = $request->meta_title;
         $service->description = $request->description;
-       
-
+        $service->status = $request->has('status') ? 1:0;
 
         $service->save();
 

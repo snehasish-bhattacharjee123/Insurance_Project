@@ -15,7 +15,7 @@ class FrontendController extends Controller
         
         $slider = Slider::where('status','=',1)->get(); 
         $experience = AdminAbout::first(); 
-        $service = Service::all();
+        $service = Service::where('status',1)->get();
         return view('welcome',compact('slider','experience','service'));
     } 
 

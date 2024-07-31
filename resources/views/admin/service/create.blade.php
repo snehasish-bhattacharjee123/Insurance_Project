@@ -44,7 +44,10 @@
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
                             </div> 
-
+                            <div class="col-md-6 my-2">
+                                <label class="form-label">Status</label>
+                                <input type="checkbox" class="form-check-input form-control" name="status">
+                            </div>
                             <div>
                                 <button  type="submit" class="btn btn-primary btn-lg float-end">Save</button>
                             </div>

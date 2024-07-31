@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire\Admin\Service;
+namespace App\Livewire\Admin\Product;
 
+use App\Models\Product;
 use App\Models\Service;
 use Livewire\Component;
 use Illuminate\Support\Facades\File; 
@@ -12,36 +13,35 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $service_id;
+    public $product_id;
 
     public function render()
     { 
-        $service = Service::orderBy('id','desc')->paginate(5);
-        return view('livewire.admin.service.index',['service'=>$service]);
+        $product = Product::orderBy('id','desc')->paginate(5); 
+        return view('livewire.admin.product.index',['product'=>$product]);
+        
     }
 
     public function delete($id)
     {
-        $this->service_id = $id;
+        $this->product_id = $id;
     }
     public function destroy()
 {
     
-    $service = Service::findOrFail($this->service_id);
+    $product = Product::findOrFail($this->product_id);
 
     
-    $sliderPath = public_path('assets/adminpanel/service/' . $service->slider_image);
+    $sliderPath = public_path('assets/adminpanel/product/' . $product->product_image);
     if (File::exists($sliderPath)) {
         File::delete($sliderPath);
     }
 
-   
-
-    
-    $service->delete();
+    $product->delete();
 
     
     session()->flash('deleted', 'The data has been deleted successfully.');
     $this->dispatch('model-close');
 }
+
 }

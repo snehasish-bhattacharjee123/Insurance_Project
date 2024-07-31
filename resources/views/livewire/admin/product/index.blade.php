@@ -8,7 +8,7 @@
         <div class="alert alert-danger text-danger" role="alert">{{ session('deleted') }}</div>
     @endif
 
-    <div wire:ignore.self class="modal fade" id="DeleteService" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div wire:ignore.self class="modal fade" id="DeleteProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -34,8 +34,8 @@
             <div class="card">
                 <div class="card-header">
                     <h2>
-                        Service
-                        <a href="{{ route('service.create') }}" class="btn btn-primary float-end btn-sm">Add Service</a>
+                        Product
+                        <a href="{{ route('product.create') }}" class="btn btn-primary float-end btn-sm">Add Product</a>
                     </h2>
                 </div>
                 <div class="card-body">
@@ -43,35 +43,34 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <th>Sr No</th>
+                                <th>Product Name</th>
                                 <th>Title</th>
-                                <th>Slider Image</th>
-                                <th>Meta Title</th>
+                                <th>Product Image</th>
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <?php
+                                    <?php
                                     $i = 1;
-                                ?>
-                                @forelse($service as $s)
-                                    
+                                    ?>
+                                @forelse($product as $p)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $s->title }}</td>
+                                        <td>{{ $p->service->title }}</td>
+                                        <td>{{ $p->title }}</td>
                                         <td>
-                                            <img src="{{ asset('assets/adminpanel/service/' . $s->slider_image) }}"
+                                            <img src="{{ asset('assets/adminpanel/product/' . $p->product_image) }}"
                                                 class="rounded mx-auto d-block" style="height: 100px; width: 100px;" />
                                         </td>
                                         
-                                        <td>{{ $s->meta_title }}</td>
-                                        <td>{{ $s->description }}</td>
+                                        <td>{{ $p->small_description }}</td>
                                         <td>
                                             @php 
                                                 $text = '';
                                                 $class = '';
                                             @endphp
-                                            @if($s->status == 1)
+                                            @if($p->status == 1)
                                                 @php
                                                     $text = 'Active';
                                                     $class = 'success';
@@ -85,10 +84,10 @@
                                             <p class="text-{{ $class }}">{{ $text }}</p>
                                         </td>
                                         <td>
-                                            <a href="{{ route('service.edit', $s->id) }}"
+                                            <a href="{{route('product.edit',$p->id)}}"
                                                 class="btn btn-success">Edit</a>
-                                            <button wire:click="delete({{ $s->id }})" class="btn btn-danger"
-                                                data-bs-toggle="modal" data-bs-target="#DeleteService">Delete
+                                            <button wire:click="delete({{ $p->id }})" class="btn btn-danger"
+                                                data-bs-toggle="modal" data-bs-target="#DeleteProduct">Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -97,18 +96,18 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        {{$service->links()}}
+                        {{$product->links()}}
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>
 @push('script')
     <script>
         window.addEventListener('model-close', event => {
-            $('#DeleteService').modal('hide');
+            $('#DeleteProduct').modal('hide');
         });
     </script>
 @endpush
