@@ -10,7 +10,7 @@
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
-     <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner"> 
                 @foreach($slider as $idex => $s) 
@@ -110,7 +110,7 @@
 
 
         <!-- Appointment Start -->
-        <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s" style="background">
+        <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s" style="background" id="appointment-form">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <div class="bg-white rounded p-5">
-                            <form id="appoinment"> 
+                            <form id="appointment"> 
                                 <div id="sendmessage" style="display:none;">Your appointment has been scheduled!</div>
                                 <div class="row g-3">
                                     <div class="col-sm-6">
@@ -244,14 +244,15 @@
     <!-- Features End -->
 
 
-    <!-- Service Start -->
+    <!-- Service Start --> 
+    @if(count($service) > 0) 
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto" style="max-width: 500px;">
                 <h1 class="display-6 mb-5">We Provide professional Insurance Services</h1>
             </div>
             <div class="row g-4 justify-content-center"> 
-                @if(count($service) > 0) 
+                
                     @foreach($service as $s)
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="service-item rounded h-100 p-5">
@@ -261,28 +262,15 @@
                                     </div>
                                     <h4 class="mb-0">{{$s->title}}</h4>
                                 </div>
-                                <p class="mb-4">{{$s->description}}</p>
+                                <p class="mb-6" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{$s->description}}</p>
                                 <a class="btn btn-light px-3" href="{{route('product.page',$s->meta_title)}}">Read More</a>
                             </div>
                         </div>  
                     @endforeach
-                @else 
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded h-100 p-5">
-                            <div class="d-flex align-items-center ms-n5 mb-4">
-                                <div class="service-icon flex-shrink-0 bg-primary rounded-end me-4">
-                                    <img class="img-fluid" src="img/icon/icon-10-light.png" alt="">
-                                </div>
-                                <h4 class="mb-0">Life Insurance</h4>
-                            </div>
-                            <p class="mb-4">Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
-                            <a class="btn btn-light px-3" href="">Read More</a>
-                        </div>
-                    </div> 
-                @endif
             </div>
         </div>
-    </div>
+    </div> 
+    @endif
     <!-- Service End -->    
 
 @endsection
@@ -324,14 +312,14 @@
 
             // If valid, proceed with AJAX request
             if (isValid) {
-                var data = $('#appoinment').serialize();
+                var data = $('#appointment').serialize();
 
                 $.ajax({
                     type: 'POST',
                     url: "{{ route('appoinment.post') }}",
                     data: data,
                     success: function(response) { 
-                        $('#appoinment')[0].reset();
+                        $('#appointment')[0].reset();
                         $('#sendmessage').show();
                     },
                     error: function(error) {
@@ -341,6 +329,26 @@
             }
         });
     });
-</script>  
+</script> 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.hash) {
+            var elementId = window.location.hash.substring(1);
+            var element = document.getElementById(elementId);
+            if (element) {
+                setTimeout(function() {
+                    var elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
+                }, 80);
+            }
+        }
+    });
+</script>
+
+
+
 @endsection
 

@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h2>
-                        Create About 
+                        Create Service
                         <a href="{{route('service.index')}}" class="btn btn-danger btn-sm float-end">Back</a>
                     </h2>
                 </div> 
@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="form-label">Title</label> 
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" oninput="this.value = toCapitalize(this.value); this.value= this.value.slice(0,30);">
                                 @error('title')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
@@ -31,7 +31,7 @@
                             
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Meta Title</label> 
-                                <input type="text" class="form-control" name="meta_title" oninput="processInput(event)">
+                                <input type="text" class="form-control" name="meta_title" oninput="processInput(event);this.value= this.value.slice(0,28);">
                                 @error('meta_title')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
@@ -39,7 +39,7 @@
 
                             <div class="col-md-12 my-3">
                                 <label class="form-label">Description</label> 
-                                <textarea name="description" rows="3" class="form-control"></textarea>
+                                <textarea name="description" rows="3" class="form-control" oninput="this.value=this.value.slice(0,100)"></textarea>
                                 @error('description')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
@@ -59,11 +59,21 @@
         </div>
     </div> 
 
-    <script>
-        function processInput(event) {
-            const input = event.target.value;
-            const processedInput = input.replace(/\s+/g, '').toLowerCase();
-            event.target.value = processedInput;
-        }
-    </script>
+@endsection
+
+@section('script') 
+<script>
+    function processInput(event) {
+        const input = event.target.value;
+        const processedInput = input.replace(/\s+/g, '').toLowerCase();
+        event.target.value = processedInput;
+    }
+</script> 
+<script>
+    function toCapitalize(value) {
+        return value.replace(/\b\w/g, function (char) {
+            return char.toUpperCase();
+        });
+    }
+</script>
 @endsection

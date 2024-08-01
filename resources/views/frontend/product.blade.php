@@ -3,12 +3,12 @@
 <style>
     .page-header {
         background-size: cover;
-        background-position: center center;
+        background-position: center center; 
     }
 
     @media (min-width: 992px) {
         .page-header {
-            height: 400px;
+            height: 550px;
         }
     }
 
@@ -18,28 +18,56 @@
             padding-top: 60px;
             padding-bottom: 60px;
         }
+    } 
+
+    .team-item {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .team-item img {
+        max-height: 200px; /* Adjust as needed */
+        object-fit: cover;
+    }
+
+    .team-item .text-center {
+        flex-grow: 1;
+    }
+
+    .team-text {
+        flex-shrink: 0;
+    }
+
+    .fixed-height {
+        height: 300px; /* Adjust this value as needed */
+        overflow: hidden;
     }
 </style>
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
-    </div>
-    <!-- Spinner End -->  
-     @foreach($service as $s)
-            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" 
-            style="background: url('{{ asset('assets/adminpanel/service/'.$s->slider_image) }}') no-repeat center center; background-size: cover;">
-            <div class="container py-5">
-                <h1 class="display-4 animated slideInDown mb-4">{{$s->title}}</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{$s->title}}</li>
-                    </ol>
-                </nav>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+    </div>  
+    
+        @if($service)
+                <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" 
+                style="background: url('{{ asset('assets/adminpanel/service/'.$service->slider_image) }}') no-repeat center center; background-size: cover;">
+                <div class="container py-5">
+                    <h1 class="display-4 animated slideInDown mb-4">{{$service->title}}</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$service->title}}</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
-    @endforeach
-    <!-- Page Header End -->
+        @endif
+
+    <!-- Page Header End --> 
+
+
+
 
 
     <!-- About Start -->
@@ -99,37 +127,38 @@
     <!-- About End -->
 
 
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto" style="max-width: 500px;">
-                <h1 class="display-6 mb-5">This Product Is Available</h1>
-            </div>
-            <div class="row g-4" style="display: flex;">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item rounded">
-                        <img class="img-fluid" src="" alt="">
-                        <div class="text-center p-4">
-                            <h5>suman</h5>
-                            <span>hw</span>
-                        </div>
-                        <div class="team-text text-center bg-white p-4">
-                            <h5>suman</h5>
-                            <p>helo</p>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-light m-1" href="https://www.instagram.com/sanjoy.dutta.5680/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square btn-light m-1" href="https://www.facebook.com/sanjoy.dutta.5680" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-light m-1" href="" target="_blank"><i class="fab fa-youtube"></i></a>
-                                <a class="btn btn-square btn-light m-1" href="" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    @if(count($product) > 0)
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto" style="max-width: 500px;">
+                    <h1 class="display-6 mb-5">This Product Is Available</h1>
+                </div> 
+                <div class="row g-4" style="display: flex;">
+                        @foreach($product as $p)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded"> 
+                                <img class="img-fluid" src="{{asset('assets/adminpanel/product/'.$p->product_image)}}" alt="">
+                                <div class="text-center p-4">
+                                    <h5>{{$p->title}}</h5>
+                                    <span style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{$p->small_description}}</span>
+                                </div>
+                                <div class="team-text text-center bg-white p-4">
+                                    <h5>{{$p->small_title}}</h5>
+                                    <p style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{$p->description}}</p>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ url('/#appointment-form') }}" class="btn btn-info" onclick="scrollToAppointment(event)">Submit The Appointment</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        @endforeach
+                    </div> 
             </div>
-        </div>
-    </div> 
+        </div>  
+    @endif
 
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> 
-@endsection
+
+@endsection 
