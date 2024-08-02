@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="col-md-6 my-3">
-                                <label class="form-label">Slider Image</label> 
+                                <label class="form-label">Slider Image For All Page</label> 
                                 <input type="file" class="form-control" name="slider_image">
                                 @error('slider_image')
                                     <span class="text text-danger">{{ $message }}</span>

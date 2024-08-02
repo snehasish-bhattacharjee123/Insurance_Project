@@ -10,7 +10,7 @@
                 <a href="{{route('post.page')}}" class="nav-item nav-link pink-animation {{ Request::routeIs('post.page') ? 'active' : '' }}">Posts</a>
                 <a href="{{route('first.page')}}" class="nav-item nav-link {{ Request::routeIs('first.page') ? 'active' : '' }}">Home</a>
                 <a href="{{route('about.page')}}" class="nav-item nav-link {{ Request::routeIs('about.page') ? 'active' : '' }}">About Us</a>
-                <a href="service.html" class="nav-item nav-link">Our Services</a>
+                <a href="{{route('service.page')}}" class="nav-item nav-link">Our Services</a>
                 
                 <a href="contact.html" class="nav-item nav-link">Contact Us</a>
             </div>

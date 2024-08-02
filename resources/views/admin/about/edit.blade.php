@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="form-label">Name</label> 
-                                <input type="text" class="form-control" name="name" value= {{$edit_about->name}} >
+                                <input type="text" class="form-control" name="name" value= "{{$edit_about->name}}" >
                                 @error('name')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
@@ -23,13 +23,13 @@
                             <div class="col-md-6">
                                 <label class="form-label">Designation Title</label> 
                                 <input type="text" class="form-control" name="Designation_title"
-                                value= {{$edit_about->Designation_title}}>
+                                value= "{{$edit_about->Designation_title}}">
                             </div>
 
                             <div class="col-md-6 my-3">
-                                <label class="form-label">Slider Image</label> 
+                                <label class="form-label">Slider Image For All Page</label> 
                                 <input type="file" class="form-control" name="slider_image" 
-                                value= {{$edit_about->slider}}>
+                                value= "{{$edit_about->slider}}">
 
                                 @if(!empty($edit_about->slider))
                                     <img src="{{asset('assets/adminpanel/about/slider/'.$edit_about->slider)}}" class="rounded mx-auto d-block float-start" style="height: 100px; width: 100px;"/>
@@ -43,7 +43,7 @@
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Profile Image</label> 
                                 <input type="file" class="form-control" name="profile_image"
-                                value= {{$edit_about->image}} >
+                                value= "{{$edit_about->image}}" >
                                 @if(!empty($edit_about->image))
                                     <img src="{{asset('assets/adminpanel/about/profile/'.$edit_about->image)}}" class="rounded mx-auto d-block float-start" style="height: 100px; width: 100px;"/>
                                 @endif
@@ -64,14 +64,14 @@
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Experience</label> 
                                 <input type="number" class="form-control" name="experience" oninput="this.value = this.value.slice(0,3)"
-                                value= {{$edit_about->experience}}>
+                                value= "{{$edit_about->experience}}">
                                 @error('experience')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Mobile Number</label> 
-                                <input type="number" class="form-control" name="phone" oninput="this.value = this.value.slice(0,10)" value= {{$edit_about->number}}>
+                                <input type="number" class="form-control" name="phone" oninput="this.value = this.value.slice(0,10)" value= "{{$edit_about->number}}">
                                 @error('number')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror
@@ -79,7 +79,7 @@
                             <div class="col-md-6 my-3">
                                 <label class="form-label">Heading</label> 
                                 <input type="text" class="form-control" name="heading_about" 
-                                value= {{$edit_about->heading_about}}>
+                                value= "{{$edit_about->heading_about}}">
                                 @error('heading_about')
                                     <span class="text text-danger">{{ $message }}</span>
                                 @enderror

@@ -23,7 +23,7 @@
                     <a class="btn btn-link" href="{{route('post.page')}}">Post</a>
                     <a class="btn btn-link" href="{{route('about.page')}}">About Us</a>
                     <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="{{route('service.page')}}">Our Services</a>
                     {{--<a class="btn btn-link" href="">Terms & Condition</a>
                     <a class="btn btn-link" href="">Support</a>--}}
                 </div>
