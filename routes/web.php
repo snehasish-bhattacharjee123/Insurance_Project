@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */  
 //  suman changes
+// snehaish there
+
 Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('first.page');
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about.page');
 Route::get('/service',[\App\Http\Controllers\Frontend\ServiceController::class, 'index'])->name('service.page');
