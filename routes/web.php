@@ -19,6 +19,7 @@ Route::get('/',[\App\Http\Controllers\Frontend\FrontendController::class, 'index
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about.page');
 Route::get('/service',[\App\Http\Controllers\Frontend\ServiceController::class, 'index'])->name('service.page');
 Route::get('/post',[\App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.page');
+Route::get('/contact-us',[\App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('contact.page');
 Route::post('/appoinment',[\App\Http\Controllers\Frontend\FrontendController::class, 'appoinment'])->name('appoinment.post');
 Route::get('/{service}/product',[\App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('product.page');
 

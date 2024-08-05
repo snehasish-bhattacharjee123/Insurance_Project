@@ -25,9 +25,9 @@ class Index extends Component
     public function store()
     { 
         $this->validate([ 
-            'slider_title' => 'required',
+            'slider_title' => 'sometimes',
             'slider_image' => 'required',
-            'slider_description' => 'required',
+            'slider_description' => 'sometimes',
         ]);  
 
         
@@ -48,7 +48,8 @@ class Index extends Component
         $slider->status = $status; 
 
         $slider->save();  
-        session()->flash('messege','Slider Added Successfully'); 
+        session()->flash('messege','Slider Added Successfully');  
+        $this->resetField();
         $this->dispatch('model-close'); 
 
     } 
@@ -121,8 +122,9 @@ class Index extends Component
         $slider->status = $status; 
 
         $slider->save();  
-        session()->flash('messege','Slider Updated Successfully'); 
-        $this->dispatch('model-close');  
+        session()->flash('messege','Slider Updated Successfully');  
+        $this->resetField();
+        $this->dispatch('model-close');   
     }
     
 }

@@ -10,9 +10,9 @@
                 <a href="{{route('post.page')}}" class="nav-item nav-link pink-animation {{ Request::routeIs('post.page') ? 'active' : '' }}">Posts</a>
                 <a href="{{route('first.page')}}" class="nav-item nav-link {{ Request::routeIs('first.page') ? 'active' : '' }}">Home</a>
                 <a href="{{route('about.page')}}" class="nav-item nav-link {{ Request::routeIs('about.page') ? 'active' : '' }}">About Us</a>
-                <a href="{{route('service.page')}}" class="nav-item nav-link">Our Services</a>
+                <a href="{{route('service.page')}}" class="nav-item nav-link {{ Request::routeIs('service.page') ? 'active' : '' }}">Our Services</a>
                 
-                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="{{route('contact.page')}}" class="nav-item nav-link {{ Request::routeIs('contact.page') ? 'active' : '' }}">Contact Us</a>
             </div>
         </div>
         {{--<a href="" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>--}}

@@ -7,25 +7,26 @@
                     <p>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square me-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square me-1" href="https://www.facebook.com/sanjoy.dutta.5680"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square me-1" href="https://www.instagram.com/sanjoydutta427/"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                </div>
+                </div> 
+                @php 
+                    $user = App\Models\User::first();
+                @endphp
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Address</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Howrah Ichapur</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+91 {{$user->number}}</p>
+                    <p><i class="fa fa-envelope me-3"></i>{{$user->email}}</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Quick Links</h5>
                     <a class="btn btn-link" href="{{route('post.page')}}">Post</a>
                     <a class="btn btn-link" href="{{route('about.page')}}">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="{{route('contact.page')}}">Contact Us</a>
                     <a class="btn btn-link" href="{{route('service.page')}}">Our Services</a>
-                    {{--<a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>--}}
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Newsletter</h5>
@@ -41,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center  mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; <a href="{{url('/')}}">Insurence</a>, All Right Reserved.
                     </div>
                 </div>
             </div>
